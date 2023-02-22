@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* position: relative; */
+  }
+
+  /* label > input[type="checkbox"] {
+    display: none;
+  } */
+/* 
+  label > input[type="checkbox"].removebox {
+    display: none;
+    position: absolute;
+    z-index: 1;
+  } */
+
+  /* label:hover > input[type="checkbox"].removebox {
+    display: inline-block;
+  }
+   */
+  /* label:hover > input[type="checkbox"].removebox + label {
+    display: inline-block;
+  }
+  
+  .removebox + label {
+    display: none;
+  } */
+
+
+  /* label.removebox:hover > input[type="checkbox"].removebox {
+    display: inline-block;
+  } */
+  
+  
+
+  /* By setting position: absolute on the removebox element, it will be 
+  taken out of the normal document flow and positioned relative to its closest 
+  positioned ancestor (in this case, the label element). Then by setting z-index: 1, 
+  you ensure that the removebox element appears on top of any other elements with 
+  a lower z-index value. */
+  
+  label:hover > input[type="checkbox"].removebox{
+    display: inline-block;
+  }
+  
+
+body {
+    display: grid;
+    grid-template: 
+    "a"
+    "b"
+    "c"
+    ;
+}
+
+header {grid-area: a;}
+main {grid-area: b;}
+footer{grid-area: c;}
+/* footer {grid-area: d;} */
