@@ -4,6 +4,8 @@ const taskTemplate = document.getElementById("new_todo_form");
 const input = document.querySelector("#new_todo");
 const listTemplate = document.getElementById("rootLi");
 const taskList = document.getElementById("taskList");
+const summaryButtons = document.getElementById("summaryButtons");
+const clearButton = document.getElementById("clearButton");
 
 listTemplate.remove();
 delete listTemplate.id;
@@ -70,14 +72,20 @@ form.onsubmit = event => {
         counter++;
         input.value = "";
 
-        document.getElementById("summaryButtons").hidden = false;
+        toggleBtn.hidden = false;
+        summaryButtons.hidden = false;
 
         printToDos(counter);
     };
 }
 
 function printToDos(counter){
-    if (counter === 1) {
+    if (counter === 0){
+        toggleBtn.hidden = true;
+        summaryButtons.hidden = true;
+    }
+    
+    else if (counter === 1) {
         document.getElementById("toDoTotal").textContent = counter + " item left";
     }
 
@@ -95,7 +103,7 @@ function completeToDo(){
 
     counter--;
     printToDos(counter);
-    document.getElementById("clearButton").hidden = false;
+    clearButton.hidden = false;
 }
 
 function showAll(){
