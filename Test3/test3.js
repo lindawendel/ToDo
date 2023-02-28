@@ -1,5 +1,5 @@
 const form = document.querySelector("form");
-const toggleBtn = form.querySelector("button");
+const toggleBtn = document.querySelector("button");
 const taskTemplate = document.getElementById("new_todo_form");
 const input = document.querySelector("#new_todo");
 const listTemplate = document.getElementById("rootLi");
@@ -59,8 +59,7 @@ form.onsubmit = event => {
         taskElement.removeAttribute("hidden");
         
         taskList.appendChild(taskElement);
-        const btn = taskElement.querySelector("button");
-        
+        const btn = taskElement.querySelector("button");        
 
         btn.onclick = event => {
             taskElement.remove();
@@ -85,6 +84,18 @@ function printToDos(counter){
     else {
         document.getElementById("toDoTotal").textContent = counter + " items left";
     }
+}
+
+function completeToDo(){
+    if (checkbox.checked == true){
+        taskElement.style.textDecoration = "line-through";
+        counter--;
+        printToDos(counter);
+    }
+
+    counter--;
+    printToDos(counter);
+    document.getElementById("clearButton").hidden = false;
 }
 
 function showAll(){
