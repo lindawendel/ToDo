@@ -21,14 +21,14 @@
             <input type="text" id="new_todo" placeholder="What needs to be done?">
         </form>
         <ul id="taskList"></ul>
-        <li hidden id="rootLi"><input type="checkbox"><label>TEST</label><button type="button">❌</button></li>
+        <li hidden id="rootLi"><input type="checkbox"><label>TEST</label><button type="button" id="deleteButton">❌</button></li>
 
         <div id="toDoSummary">
             <div id="summaryButtons" hidden>
                 <p> <output id="toDoTotal"></output></p>
-                <button type="button" id="all" onclick="showAll()">All</button>
-                <button type="button" id="active" onclick="showActive()">Active</button>
-                <button type="button" id="completed" onclick="showCompleted()">Completed</button>
+                <button type="button" id="allButton" onclick="showAll()">All</button>
+                <button type="button" id="activeButton" onclick="showActive()">Active</button>
+                <button type="button" id="completedButton" onclick="showCompleted()">Completed</button>
             </div>
             <div id="clearButton" hidden>
                 <button type="button" id="clear" onclick="clearCompleted()">Clear completed</button>
