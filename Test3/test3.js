@@ -5,7 +5,7 @@ const input = document.querySelector("#new_todo");
 const listTemplate = document.getElementById("rootLi");
 const taskList = document.getElementById("taskList");
 const summaryButtons = document.getElementById("summaryButtons");
-const clearButton = document.getElementById("clearButton");
+const clearButton = document.getElementById("clear");
 
 listTemplate.remove();
 delete listTemplate.id;
@@ -59,16 +59,12 @@ form.onsubmit = event => {
         // taskElement.childNodes[2].id= "button" + counter;
         
         taskElement.removeAttribute("hidden");
-        
         taskList.appendChild(taskElement);
-        const btn = taskElement.querySelector("button");        
 
-        btn.onclick = event => {
-            taskElement.remove();
-            counter--;
-            printToDos(counter);
-        }
-
+        const btn = taskElement.querySelector("button");  
+        const chb = taskElement.querySelector("input[type=checkbox]");
+        const lbl = taskElement.querySelector("label");  
+        
         counter++;
         input.value = "";
 
@@ -76,6 +72,18 @@ form.onsubmit = event => {
         summaryButtons.hidden = false;
 
         printToDos(counter);
+
+        btn.onclick = event => {
+            taskElement.remove();
+            counter--;
+            printToDos(counter);
+        }
+
+        chb.addEventListener("change", () => {
+            completeToDo(chb, lbl)
+        })
+
+       
     };
 }
 
@@ -94,16 +102,22 @@ function printToDos(counter){
     }
 }
 
-function completeToDo(){
-    if (checkbox.checked == true) {
-        taskElement.style.textDecoration = "line-through";
+function completeToDo(chb, lbl){
+    if (chb.checked === true) {
+        lbl.style.textDecoration = "line-through";
         counter--;
-        printToDos(counter);
+        //printToDos(counter);
+        clearButton.hidden = false;
+    }
+    else {
+        lbl.style.textDecoration = "none";
+        counter++;
+        clearButton.hidden = true;
     }
 
-    counter--;
+   // counter--;
     printToDos(counter);
-    clearButton.hidden = false;
+    
 }
 
 function showAll(){
