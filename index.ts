@@ -76,22 +76,23 @@ function addListItem(task: Task) {
 
     //Create textnode to contain the X-emoji?
 
-    const removebox = document.createElement("input")
-    removebox.type = "checkbox"
-    removebox.name = "removebox"
-    removebox.checked = task.remove; 
+    const removeBtn = document.createElement("button")
+    removeBtn.textContent = "❌"
+    removeBtn.name = "removeBtn" 
+    // + counter
+    
     // removebox.style.display = "none"
 
-    removebox.addEventListener ("change", () => {
-        task.remove = removebox.checked 
-        item.remove()
-    } )
+    // removeBtn.addEventListener ("change", () => {
+    //     task.remove = removebox.checked 
+    //     item.remove()
+    // } )
     
     const removeLabel = document.createElement("label")
-    removeLabel.htmlFor = `removebox-${task.id}`
-    removeLabel.classList.add("removebox")
+    removeLabel.htmlFor = `removeBtn-${task.id}`
+    removeLabel.classList.add("removeBtn")
 
-    removeLabel.appendChild(removebox)
+    removeLabel.appendChild(removeBtn)
 
     label.append(checkLabel, task.title, removeLabel)    
     
@@ -100,7 +101,10 @@ function addListItem(task: Task) {
 
     counter++
 
-    console.log(removeLabel)
+    console.log(removeBtn)
 }
+
+
+
 
 

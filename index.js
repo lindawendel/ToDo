@@ -1,4 +1,6 @@
 // https://www.youtube.com/watch?v=jBmrduvKl5w&t=191s
+//Add textcontent= X to button?
+// ❌
 const list = document.querySelector("#list");
 const form = document.querySelector("#new_todo_form");
 const input = document.querySelector("#new_todo");
@@ -27,8 +29,7 @@ function addListItem(task) {
     const label = document.createElement("label");
     //     The htmlFor property in HTML is used to associate a label element with an input element. 
     //     It is commonly used to give focus to an input element when the label is clicked.
-    // In the code you provided, checkLabel is a newly created label element, and checkbox is a newly
-    //  created input element. 
+    // CheckLabel is a newly created label element, and checkbox is a newly created input element. 
     //  The line checkLabel.htmlFor = checkbox-${task.id}; sets the htmlFor attribute of the label to the 
     //  string checkbox-${task.id}, where task.id is the id of the current task object. 
     //  This creates a relationship between the label and input elements such that when the label element
@@ -40,51 +41,30 @@ function addListItem(task) {
     const checkbox = document.createElement("input");
     checkbox.name = "checkbox";
     checkbox.type = "checkbox";
-    checkbox.checked = task.completed; //Vet ej riktigt varför
+    checkbox.checked = task.completed;
     checkbox.addEventListener("change", () => {
         task.completed = checkbox.checked;
         // console.log(tasks)
     });
     checkLabel.appendChild(checkbox);
-    const removebox = document.createElement("input");
-    removebox.type = "checkbox";
-    removebox.name = "removebox";
-    removebox.checked = task.remove; //Vet ej riktigt varför
+    //Create textnode to contain the X-emoji?
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "❌";
+    removeBtn.name = "removeBtn";
+    // + counter
     // removebox.style.display = "none"
-    //   // Show remove-box on mouse enter
-    //   checkLabel.addEventListener("mouseenter", () => {
-    //     removebox.style.display = "inline";
-    //     });
-    // // Hide remove-box on mouse leave
-    //     checkLabel.addEventListener("mouseleave", () => {
-    //     removebox.style.display = "none";
-    //     });
-    removebox.addEventListener("change", () => {
-        task.remove = removebox.checked;
-        item.remove();
-    });
-    // const checkLabel = document.createElement("label")
-    // // removeLabel.style.display = "none"
-    // checkLabel.appendChild(checkbox)
-    // checkLabel.classList.add("checkbox");
+    // removeBtn.addEventListener ("change", () => {
+    //     task.remove = removebox.checked 
+    //     item.remove()
+    // } )
     const removeLabel = document.createElement("label");
-    // removeLabel.style.display = "none"
-    // removeLabel.appendChild(removebox)
-    // removeLabel.classList.add("removebox");
-    removeLabel.htmlFor = `removebox-${task.id}`;
-    removeLabel.classList.add("removebox");
-    removeLabel.appendChild(removebox);
-    //       // Show remove-box on mouse enter
-    //     removeLabel.addEventListener("mouseenter", () => {
-    //     removebox.style.display = "inline";
-    //     });
-    // // Hide remove-box on mouse leave
-    //     removeLabel.addEventListener("mouseleave", () => {
-    //     removebox.style.display = "none";
-    //     });
+    removeLabel.htmlFor = `removeBtn-${task.id}`;
+    removeLabel.classList.add("removeBtn");
+    removeLabel.appendChild(removeBtn);
     label.append(checkLabel, task.title, removeLabel);
     item.append(label);
     list.append(item);
     counter++;
-    console.log(removeLabel);
+    console.log(removeBtn);
 }
+//# sourceMappingURL=index.js.map
