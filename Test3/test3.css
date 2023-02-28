@@ -6,4 +6,38 @@
 
   li {
     list-style-type: none;
+    display:grid;
+    /* grid-template-columns: min-content; */
+    grid-template: 
+    "a b c";
   }
+
+  li input {
+    justify-self: start;
+  }
+
+  li button {
+    justify-self: end;
+  }
+
+  form button {
+    justify-self: start;
+   }
+
+  form {
+    display: grid;
+    grid-template: 
+    "a b" / 1fr 9fr;
+  }
+
+  body {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    /* grid-template: */
+  }
+
+  #container {
+    display: grid;
+  }
+  
