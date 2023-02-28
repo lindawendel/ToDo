@@ -7,7 +7,7 @@ const taskList = document.getElementById("taskList");
 
 listTemplate.remove();
 delete listTemplate.id;
-let counter = 1;
+let counter = 0;
 
 toggleBtn.onclick = event => 
 {
@@ -63,8 +63,9 @@ form.onsubmit = event => {
         
 
         btn.onclick = event => {
-
             taskElement.remove();
+            counter--;
+            printToDos(counter);
         }
 
         counter++;
@@ -101,6 +102,3 @@ function showCompleted(){
 function clearCompleted(){
 
 }
-
-
-
