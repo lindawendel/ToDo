@@ -20,15 +20,21 @@
     justify-self: end;
   }
 
-  form button {
-    justify-self: start;
-   }
 
   form {
     display: grid;
     grid-template: 
     "a b" / 1fr 9fr;
   }
+
+  form button {
+    justify-self: start;
+    grid-area: "a";
+   }
+
+   form input {
+    grid-area: b;
+   }
 
   body {
     display: grid;

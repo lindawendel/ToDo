@@ -95,7 +95,7 @@ function printToDos(counter){
 }
 
 function completeToDo(){
-    if (checkbox.checked == true){
+    if (checkbox.checked == true) {
         taskElement.style.textDecoration = "line-through";
         counter--;
         printToDos(counter);
