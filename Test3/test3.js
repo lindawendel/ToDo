@@ -1,15 +1,40 @@
 const form = document.querySelector("form");
+const toggleBtn = form.querySelector("button");
 const taskTemplate = document.getElementById("new_todo_form");
 const input = document.querySelector("#new_todo");
 const listTemplate = document.getElementById("rootLi");
 const taskList = document.getElementById("taskList");
 
-
-const listTemplate2 = document.getElementById("rootLi");
-
 listTemplate.remove();
 delete listTemplate.id;
 let counter = 1;
+
+toggleBtn.onclick = event => 
+{
+    const allCheckboxes = document.querySelectorAll("input[type=checkbox]");
+
+    let count = 0;
+    for (let b of allCheckboxes) {
+
+        if (b.checked )
+        {
+            count++;
+        }
+    }
+
+    if (count === allCheckboxes.length) {
+
+        for (let b of allCheckboxes) {
+            b.checked = false;
+        }
+    }
+    else {
+
+        for (let b of allCheckboxes) {
+            b.checked = true;
+        }
+    }
+}
 
 
 form.onsubmit = event => {
