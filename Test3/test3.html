@@ -15,17 +15,30 @@
     <header>
         <h1>todos</h1>
     </header>
-        <div id="container"> 
-            <form id="new_todo_form">
-               <button type = "button">🔽</button> 
-                <input type="text" id="new_todo" placeholder="What needs to be done?">
-            </form>
-                <ul id="taskList"></ul>
-                <li hidden id="rootLi"><input type="checkbox"><label>TEST</label><button type="button">❌</button></li>
+    <div id="container">
+        <form id="new_todo_form">
+            <button type="button">🔽</button>
+            <input type="text" id="new_todo" placeholder="What needs to be done?">
+        </form>
+        <ul id="taskList"></ul>
+        <li hidden id="rootLi"><input type="checkbox"><label>TEST</label><button type="button">❌</button></li>
+
+        <div id="toDoSummary">
+            <div id="summaryButtons" hidden>
+                <p> <output id="toDoTotal"></output></p>
+                <button id="all" onclick="showAll()">All</button>
+                <button id="active" onclick="showActive()">Active</button>
+                <button id="completed" onclick="showCompleted()">Completed</button>
             </div>
-<footer>
-    <p>Written by Magnus Könberg and Linda Wendel</p>
-</footer>
-    
+            <div id="clearButton" hidden>
+                <button id="clear" onclick="clearCompleted()">Clear completed</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Written by Magnus Könberg and Linda Wendel</p>
+    </footer>
+
 </body>
+
 </html>

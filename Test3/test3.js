@@ -69,9 +69,38 @@ form.onsubmit = event => {
 
         counter++;
         input.value = "";
+
+        document.getElementById("summaryButtons").hidden = false;
+
+        printToDos(counter);
     };
 }
 
+function printToDos(counter){
+    if (counter === 1) {
+        document.getElementById("toDoTotal").textContent = counter + " item left";
+    }
+
+    else {
+        document.getElementById("toDoTotal").textContent = counter + " items left";
+    }
+}
+
+function showAll(){
+
+}
+
+function showActive(){
+
+}
+
+function showCompleted(){
+
+}
+
+function clearCompleted(){
+
+}
 
 
 
