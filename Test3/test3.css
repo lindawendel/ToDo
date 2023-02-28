@@ -40,4 +40,17 @@
   #container {
     display: grid;
   }
+
+  /*Kopierar in Jakobs kod för att dölja button:
+  
+   li {
+    display: flex;
+    flex-direction: row;
+  }
+  button {
+    display: none;
+  }
+  li:hover button {
+    display: block;
+  }*/
   
