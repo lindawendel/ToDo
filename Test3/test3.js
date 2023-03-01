@@ -60,8 +60,8 @@ function addToDo() {
     counter++;
     input.value = "";
 
-    toggleButton.hidden = false;
-    summaryButtons.hidden = false;
+    showButton(toggleButton);
+    showButton(summaryButtons);
 
     printToDos(counter);
 
@@ -83,8 +83,8 @@ function printToDos(counter) {
     } */
 
     if (counter === 0) {
-        toggleButton.hidden = true;
-        summaryButtons.hidden = true;
+        hideButton(toggleButton);
+        hideButton(summaryButtons);
     }
 
     else if (counter === 1) {
@@ -96,17 +96,25 @@ function printToDos(counter) {
     }
 }
 
+function showButton(button){
+    button.hidden = false;
+}
+
+function hideButton(button){
+    button.hidden = true;
+}
+
 function completeToDo(checkbox, label) {
     if (checkbox.checked === true) {
         label.style.textDecoration = "line-through";
         counter--;
         //printToDos(counter);
-        clearButton.hidden = false;
+        showButton(clearButton);
     }
     else {
         label.style.textDecoration = "none";
         counter++;
-        clearButton.hidden = true;
+        hideButton(clearButton);
     }
 
     // counter--;
