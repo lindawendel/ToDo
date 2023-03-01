@@ -5,39 +5,39 @@ const input = document.querySelector("#new_todo");
 const listTemplate = document.getElementById("rootLi");
 const taskList = document.getElementById("taskList");
 const summaryButtons = document.getElementById("summaryButtons");
+const allButton = document.getElementById("allButton");
+const activeButton = document.getElementById("activeButton");
+const completedButton = document.getElementById("completedButton");
 const clearButton = document.getElementById("clearButton");
 
 listTemplate.remove();
 delete listTemplate.id;
 let counter = 0;
 
-toggleButton.onclick = event => 
+toggleButton.onclick = () => 
 {
     const allCheckboxes = document.querySelectorAll("input[type=checkbox]");
 
     let count = 0;
-    for (let b of allCheckboxes) {
 
-        if (b.checked )
-        {
+    for (let b of allCheckboxes) {
+        if (b.checked){
             count++;
         }
     }
 
     if (count === allCheckboxes.length) {
-
         for (let b of allCheckboxes) {
             b.checked = false;
         }
     }
-    else {
 
+    else {
         for (let b of allCheckboxes) {
             b.checked = true;
         }
     }
 }
-
 
 form.onsubmit = event => {
     event.preventDefault();
@@ -73,7 +73,7 @@ form.onsubmit = event => {
 
         printToDos(counter);
 
-        button.onclick = event => {
+        button.onclick = () => {
             taskElement.remove();
             counter--;
             printToDos(counter);
@@ -121,18 +121,4 @@ function completeToDo(checkbox, label){
     printToDos(counter);    
 }
 
-function showAll(){
-
-}
-
-function showActive(){
-
-}
-
-function showCompleted(){
-
-}
-
-function clearCompleted(){
-
-}
+allButton.onclick
