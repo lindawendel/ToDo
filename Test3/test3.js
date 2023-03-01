@@ -9,6 +9,7 @@ const allButton = document.getElementById("allButton");
 const activeButton = document.getElementById("activeButton");
 const completedButton = document.getElementById("completedButton");
 const clearButton = document.getElementById("clearButton");
+const toDoTotal = document.getElementById("toDoTotal");
 
 listTemplate.remove();
 delete listTemplate.id;
@@ -86,21 +87,22 @@ form.onsubmit = event => {
 }
 
 function printToDos(counter){
-    if (counter === 0 && checkbox.checked === true){
-        document.getElementById("toDoTotal").textContent = counter + " items left";
-    }
+    //funkar inte. counter visar 1
+    /* if (counter === 0 && checkbox.checked === true){
+        toDoTotal.textContent = counter + " items left";
+    } */
     
-    else if (counter === 0){
+    if (counter === 0){
         toggleButton.hidden = true;
         summaryButtons.hidden = true;
     }
     
     else if (counter === 1) {
-        document.getElementById("toDoTotal").textContent = counter + " item left";
+        toDoTotal.textContent = counter + " item left";
     }
 
     else {
-        document.getElementById("toDoTotal").textContent = counter + " items left";
+        toDoTotal.textContent = counter + " items left";
     }
 }
 
@@ -121,4 +123,26 @@ function completeToDo(checkbox, label){
     printToDos(counter);    
 }
 
-allButton.onclick
+allButton.addEventListener("click", showAll);
+
+function showAll(){
+    printToDos(counter);
+}
+
+activeButton.addEventListener("click", showActive);
+
+function showActive(){
+
+}
+
+completedButton.addEventListener("click", showCompleted);
+
+function showCompleted(){
+
+}
+
+clearButton.addEventListener("click", clearCompleted);
+
+function clearCompleted(){
+
+}
