@@ -81,14 +81,16 @@ form.onsubmit = event => {
 
         checkbox.addEventListener("change", () => {
             completeToDo(checkbox, label)
-        })
-
-       
+        })       
     };
 }
 
 function printToDos(counter){
-    if (counter === 0){
+    if (counter === 0 && checkbox.checked === true){
+        document.getElementById("toDoTotal").textContent = counter + " items left";
+    }
+    
+    else if (counter === 0){
         toggleButton.hidden = true;
         summaryButtons.hidden = true;
     }
@@ -116,8 +118,7 @@ function completeToDo(checkbox, label){
     }
 
    // counter--;
-    printToDos(counter);
-    
+    printToDos(counter);    
 }
 
 function showAll(){

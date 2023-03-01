@@ -53,10 +53,10 @@
     display: flex;
     flex-direction: row;
   }
-  button {
+  #deleteButton {
     display: none;
   }
-  li:hover button {
+  li:hover #deleteButton {
     display: block;
   }*/
   
