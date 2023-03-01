@@ -28,13 +28,13 @@ form.onsubmit = event => {
     event.preventDefault();
 
     if (input.value !== null && input.value !== "") {
-        addToTo();
+        addToDo();
     };
 }
 
 
 // Functions
-function addToTo() {
+function addToDo() {
 
     // Clone the question template in the HTML and insert the question prompt.
     const taskElement = listTemplate.cloneNode(true);
