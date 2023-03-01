@@ -1,58 +1,58 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  li {
-    list-style-type: none;
-    display:grid;
-    /* grid-template-columns: min-content; */
-    grid-template: 
+li {
+  list-style-type: none;
+  display: grid;
+  /* grid-template-columns: min-content; */
+  grid-template:
     "a b c";
-  }
+}
 
-  li input {
-    justify-self: start;
-  }
-  
-  /*Försökte få till en rund checkbox*/
-  li input{
-    border-radius: 50%;
-  }
+li input {
+  justify-self: start;
+}
 
-  li button {
-    justify-self: end;
-  }
+/*Försökte få till en rund checkbox
+li input {
+  border-radius: 50%;
+}*/
+
+li button {
+  justify-self: end;
+}
 
 
-  form {
-    display: grid;
-    grid-template: 
+form {
+  display: grid;
+  grid-template:
     "a b" / 1fr 9fr;
-  }
+}
 
-  form button {
-    justify-self: start;
-    grid-area: "a";
-   }
+form button {
+  justify-self: start;
+  grid-area: "a";
+}
 
-   form input {
-    grid-area: b;
-   }
+form input {
+  grid-area: b;
+}
 
-  body {
-    display: grid;
-    justify-content: center;
-    text-align: center;
-    /* grid-template: */
-  }
+body {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  /* grid-template: */
+}
 
-  #container {
-    display: grid;
-  }
+#container {
+  display: grid;
+}
 
-  /*Kopierar in Jakobs kod för att dölja button:
+/*Kopierar in Jakobs kod för att dölja button. Den funkar men objekten läggs inte på rätt ställe:
   
   li {
     display: flex;
@@ -64,4 +64,3 @@
   li:hover #deleteButton {
     display: block;
   }*/
-  
