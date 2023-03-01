@@ -18,7 +18,7 @@
 
     <div id="container">
         <form id="new_todo_form">
-            <button type="button" hidden>🔽</button>
+            <button type="button" hidden id="toggleButton">🔽</button>
             <input type="text" id="new_todo" placeholder="What needs to be done?">
         </form>
 
@@ -37,7 +37,7 @@
                 <button type="button" id="completedButton" onclick="showCompleted()">Completed</button>
                 <!-- </div>
                 <div id="clearButton" hidden> -->
-                <button type="button" hidden id="clear" onclick="clearCompleted()">Clear completed</button>
+                <button type="button" hidden id="clearButton" onclick="clearCompleted()">Clear completed</button>
             </div>
         </div>
     </div>

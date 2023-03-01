@@ -1,17 +1,17 @@
 const form = document.querySelector("form");
-const toggleBtn = document.querySelector("button");
+const toggleButton = document.getElementById("toggleButton");
 const taskTemplate = document.getElementById("new_todo_form");
 const input = document.querySelector("#new_todo");
 const listTemplate = document.getElementById("rootLi");
 const taskList = document.getElementById("taskList");
 const summaryButtons = document.getElementById("summaryButtons");
-const clearButton = document.getElementById("clear");
+const clearButton = document.getElementById("clearButton");
 
 listTemplate.remove();
 delete listTemplate.id;
 let counter = 0;
 
-toggleBtn.onclick = event => 
+toggleButton.onclick = event => 
 {
     const allCheckboxes = document.querySelectorAll("input[type=checkbox]");
 
@@ -61,26 +61,26 @@ form.onsubmit = event => {
         taskElement.removeAttribute("hidden");
         taskList.appendChild(taskElement);
 
-        const btn = taskElement.querySelector("button");  
-        const chb = taskElement.querySelector("input[type=checkbox]");
-        const lbl = taskElement.querySelector("label");  
+        const button = taskElement.querySelector("button");  
+        const checkbox = taskElement.querySelector("input[type=checkbox]");
+        const label = taskElement.querySelector("label");  
         
         counter++;
         input.value = "";
 
-        toggleBtn.hidden = false;
+        toggleButton.hidden = false;
         summaryButtons.hidden = false;
 
         printToDos(counter);
 
-        btn.onclick = event => {
+        button.onclick = event => {
             taskElement.remove();
             counter--;
             printToDos(counter);
         }
 
-        chb.addEventListener("change", () => {
-            completeToDo(chb, lbl)
+        checkbox.addEventListener("change", () => {
+            completeToDo(checkbox, label)
         })
 
        
@@ -89,7 +89,7 @@ form.onsubmit = event => {
 
 function printToDos(counter){
     if (counter === 0){
-        toggleBtn.hidden = true;
+        toggleButton.hidden = true;
         summaryButtons.hidden = true;
     }
     
@@ -102,15 +102,15 @@ function printToDos(counter){
     }
 }
 
-function completeToDo(chb, lbl){
-    if (chb.checked === true) {
-        lbl.style.textDecoration = "line-through";
+function completeToDo(checkbox, label){
+    if (checkbox.checked === true) {
+        label.style.textDecoration = "line-through";
         counter--;
         //printToDos(counter);
         clearButton.hidden = false;
     }
     else {
-        lbl.style.textDecoration = "none";
+        label.style.textDecoration = "none";
         counter++;
         clearButton.hidden = true;
     }
