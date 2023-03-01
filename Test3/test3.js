@@ -60,7 +60,7 @@ form.onsubmit = event => {
         // taskElement.childNodes[2].id= "button" + counter;
         
         taskElement.removeAttribute("hidden");
-        taskList.appendChild(taskElement);
+        taskList.append(taskElement);
 
         const button = taskElement.querySelector("button");  
         const checkbox = taskElement.querySelector("input[type=checkbox]");
@@ -82,7 +82,8 @@ form.onsubmit = event => {
 
         checkbox.addEventListener("change", () => {
             completeToDo(checkbox, label)
-        })       
+        })        
+        
     };
 }
 
@@ -124,24 +125,21 @@ function completeToDo(checkbox, label){
 }
 
 allButton.addEventListener("click", showAll);
+activeButton.addEventListener("click", showActive);
+completedButton.addEventListener("click", showCompleted);
+clearButton.addEventListener("click", clearCompleted);
 
 function showAll(){
     printToDos(counter);
 }
 
-activeButton.addEventListener("click", showActive);
-
 function showActive(){
 
 }
 
-completedButton.addEventListener("click", showCompleted);
-
 function showCompleted(){
 
 }
-
-clearButton.addEventListener("click", clearCompleted);
 
 function clearCompleted(){
 
