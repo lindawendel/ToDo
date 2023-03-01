@@ -1,3 +1,4 @@
+// Variables
 const form = document.querySelector("form");
 const toggleButton = document.getElementById("toggleButton");
 const taskTemplate = document.getElementById("new_todo_form");
@@ -15,30 +16,13 @@ listTemplate.remove();
 delete listTemplate.id;
 let counter = 0;
 
-toggleButton.onclick = () => 
-{
-    const allCheckboxes = document.querySelectorAll("input[type=checkbox]");
 
-    let count = 0;
-
-    for (let b of allCheckboxes) {
-        if (b.checked){
-            count++;
-        }
-    }
-
-    if (count === allCheckboxes.length) {
-        for (let b of allCheckboxes) {
-            b.checked = false;
-        }
-    }
-
-    else {
-        for (let b of allCheckboxes) {
-            b.checked = true;
-        }
-    }
-}
+// Events
+toggleButton.addEventListener("click", toggleCheckboxes);
+allButton.addEventListener("click", showAll);
+activeButton.addEventListener("click", showActive);
+completedButton.addEventListener("click", showCompleted);
+clearButton.addEventListener("click", clearCompleted);
 
 form.onsubmit = event => {
     event.preventDefault();
@@ -87,6 +71,8 @@ form.onsubmit = event => {
     };
 }
 
+
+// Functions
 function printToDos(counter){
     //funkar inte. counter visar 1
     /* if (counter === 0 && checkbox.checked === true){
@@ -124,10 +110,29 @@ function completeToDo(checkbox, label){
     printToDos(counter);    
 }
 
-allButton.addEventListener("click", showAll);
-activeButton.addEventListener("click", showActive);
-completedButton.addEventListener("click", showCompleted);
-clearButton.addEventListener("click", clearCompleted);
+function toggleCheckboxes(){
+    const allCheckboxes = document.querySelectorAll("input[type=checkbox]");
+
+    let count = 0;
+
+    for (let b of allCheckboxes) {
+        if (b.checked){
+            count++;
+        }
+    }
+
+    if (count === allCheckboxes.length) {
+        for (let b of allCheckboxes) {
+            b.checked = false;
+        }
+    }
+
+    else {
+        for (let b of allCheckboxes) {
+            b.checked = true;
+        }
+    }
+}
 
 function showAll(){
     printToDos(counter);
