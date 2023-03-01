@@ -26,64 +26,67 @@ clearButton.addEventListener("click", clearCompleted);
 
 form.onsubmit = event => {
     event.preventDefault();
-                                                     
-    if (input.value !== null && input.value !=="")
-    {
-        // Clone the question template in the HTML and insert the question prompt.
-        const taskElement = listTemplate.cloneNode(true);
 
-        // taskElement.childNodes[0]= input.value;
-        // taskElement.childNodes[1].textContent = input.value;
-        // taskElement.childNodes[2] = input.button;
-
-        taskElement.querySelector("label").textContent = input.value;
-
-        // taskElement.id = "task" + counter;
-        // taskElement.childNodes[0].id = "input" + counter;
-        // taskElement.childNodes[1].id = "label" + counter;
-        // taskElement.childNodes[2].id= "button" + counter;
-        
-        taskElement.removeAttribute("hidden");
-        taskList.append(taskElement);
-
-        const button = taskElement.querySelector("button");  
-        const checkbox = taskElement.querySelector("input[type=checkbox]");
-        const label = taskElement.querySelector("label");  
-        
-        counter++;
-        input.value = "";
-
-        toggleButton.hidden = false;
-        summaryButtons.hidden = false;
-
-        printToDos(counter);
-
-        button.onclick = () => {
-            taskElement.remove();
-            counter--;
-            printToDos(counter);
-        }
-
-        checkbox.addEventListener("change", () => {
-            completeToDo(checkbox, label)
-        })        
-        
+    if (input.value !== null && input.value !== "") {
+        addToTo();
     };
 }
 
 
 // Functions
-function printToDos(counter){
+function addToTo() {
+
+    // Clone the question template in the HTML and insert the question prompt.
+    const taskElement = listTemplate.cloneNode(true);
+
+    // taskElement.childNodes[0]= input.value;
+    // taskElement.childNodes[1].textContent = input.value;
+    // taskElement.childNodes[2] = input.button;
+
+    taskElement.querySelector("label").textContent = input.value;
+
+    // taskElement.id = "task" + counter;
+    // taskElement.childNodes[0].id = "input" + counter;
+    // taskElement.childNodes[1].id = "label" + counter;
+    // taskElement.childNodes[2].id= "button" + counter;
+
+    taskElement.removeAttribute("hidden");
+    taskList.append(taskElement);
+
+    const button = taskElement.querySelector("button");
+    const checkbox = taskElement.querySelector("input[type=checkbox]");
+    const label = taskElement.querySelector("label");
+
+    counter++;
+    input.value = "";
+
+    toggleButton.hidden = false;
+    summaryButtons.hidden = false;
+
+    printToDos(counter);
+
+    button.onclick = () => {
+        taskElement.remove();
+        counter--;
+        printToDos(counter);
+    }
+
+    checkbox.addEventListener("change", () => {
+        completeToDo(checkbox, label)
+    })
+}
+
+function printToDos(counter) {
     //funkar inte. counter visar 1
     /* if (counter === 0 && checkbox.checked === true){
         toDoTotal.textContent = counter + " items left";
     } */
-    
-    if (counter === 0){
+
+    if (counter === 0) {
         toggleButton.hidden = true;
         summaryButtons.hidden = true;
     }
-    
+
     else if (counter === 1) {
         toDoTotal.textContent = counter + " item left";
     }
@@ -93,7 +96,7 @@ function printToDos(counter){
     }
 }
 
-function completeToDo(checkbox, label){
+function completeToDo(checkbox, label) {
     if (checkbox.checked === true) {
         label.style.textDecoration = "line-through";
         counter--;
@@ -106,17 +109,17 @@ function completeToDo(checkbox, label){
         clearButton.hidden = true;
     }
 
-   // counter--;
-    printToDos(counter);    
+    // counter--;
+    printToDos(counter);
 }
 
-function toggleCheckboxes(){
+function toggleCheckboxes() {
     const allCheckboxes = document.querySelectorAll("input[type=checkbox]");
 
     let count = 0;
 
     for (let b of allCheckboxes) {
-        if (b.checked){
+        if (b.checked) {
             count++;
         }
     }
@@ -134,18 +137,18 @@ function toggleCheckboxes(){
     }
 }
 
-function showAll(){
+function showAll() {
     printToDos(counter);
 }
 
-function showActive(){
+function showActive() {
 
 }
 
-function showCompleted(){
+function showCompleted() {
 
 }
 
-function clearCompleted(){
+function clearCompleted() {
 
 }
