@@ -79,6 +79,10 @@ function addToDo() {
     })
 }
 
+function removeToDo(){
+    
+}
+
 function printToDos(counter) {
     //funkar inte. counter visar 1
     /* if (counter === 0 && checkbox.checked === true){
