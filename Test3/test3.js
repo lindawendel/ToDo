@@ -62,6 +62,11 @@ function addToDo() {
     button.onclick = () => {
         taskElement.remove();
         counter--;
+        
+        if (button.checked === false)
+        {
+            itemsLeft--;
+        }
         printToDos(counter);
         if (counter === 0) {
             hideButton(toggleButton);
