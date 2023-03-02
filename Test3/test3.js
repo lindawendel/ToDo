@@ -56,8 +56,8 @@ function addToDo() {
 
     showButton(toggleButton);
     showButton(summaryButtons);
-
-    printToDos(counter);
+    
+    printToDos();
 
     button.onclick = () => {
         taskElement.remove();
@@ -68,12 +68,12 @@ function addToDo() {
             itemsLeft--;
         }
 
-        printToDos(counter);
+        printToDos();
         if (counter === 0) {
             hideButton(toggleButton);
         }
     }
-
+    
     checkbox.addEventListener("change", () => {
         completeToDo(checkbox, label)
     })
@@ -83,7 +83,7 @@ function removeToDo(){
     
 }
 
-function printToDos(counter) {
+function printToDos() {
     //funkar inte. counter visar 1
     /* if (counter === 0 && checkbox.checked === true){
         toDoTotal.textContent = counter + " items left";
@@ -95,11 +95,11 @@ function printToDos(counter) {
     }
 
     else if (counter === 1) {
-        toDoTotal.textContent = itemsLeft + " item left";
+        toDoTotal.textContent = counter + " item left";
     }
 
     else {
-        toDoTotal.textContent = itemsLeft + " items left";
+        toDoTotal.textContent = counter + " items left";
     }
 }
 
@@ -141,7 +141,7 @@ function completeToDo(checkbox, label) {
     }
 
     // counter--;
-    printToDos(counter);
+    printToDos();
 }
 
 function toggleCheckboxes() {
@@ -169,7 +169,7 @@ function toggleCheckboxes() {
 }
 
 function showAll() {
-    printToDos(counter);
+    printToDos();
 }
 
 function showActive() {
