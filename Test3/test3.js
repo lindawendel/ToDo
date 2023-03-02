@@ -1,17 +1,17 @@
 // Variables
 const form = document.querySelector("form");
-const toggleButton = document.getElementById("toggleButton");
-const taskTemplate = document.getElementById("new_todo_form");
+const toggleButton = document.querySelector("#toggleButton");
+const taskTemplate = document.querySelector("#new_todo_form");
 const input = document.querySelector("#new_todo");
-const listTemplate = document.getElementById("rootLi");
-const taskList = document.getElementById("taskList");
-const summaryButtons = document.getElementById("summaryButtons");
+const listTemplate = document.querySelector("#rootLi");
+const taskList = document.querySelector("#taskList");
+const summaryButtons = document.querySelector("#summaryButtons");
 //const summaryButtons = document.querySelectorAll(".summary");
-const allButton = document.getElementById("allButton");
-const activeButton = document.getElementById("activeButton");
-const completedButton = document.getElementById("completedButton");
-const clearButton = document.getElementById("clearButton");
-const toDoTotal = document.getElementById("toDoTotal");
+const allButton = document.querySelector("#allButton");
+const activeButton = document.querySelector("#activeButton");
+const completedButton = document.querySelector("#completedButton");
+const clearButton = document.querySelector("#clearButton");
+const toDoTotal = document.querySelector("#toDoTotal");
 
 listTemplate.remove();
 delete listTemplate.id;
