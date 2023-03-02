@@ -1,10 +1,14 @@
 // Variables
 const form = document.querySelector("form");
 const toggleButton = document.querySelector("#toggleButton");
-const taskTemplate = document.querySelector("#new_todo_form");
+
+//Används inte?!
+//const taskTemplate = document.querySelector("#new_todo_form"); 
+
 const input = document.querySelector("#new_todo");
 const listTemplate = document.querySelector("#rootLi");
-const taskList = document.querySelector("#taskList");
+const originalTaskList = document.querySelector("#taskList");
+const taskElements = document.querySelectorAll("#rootli li");
 const summaryButtons = document.querySelector("#summaryButtons");
 //const summaryButtons = document.querySelectorAll(".summary");
 const allButton = document.querySelector("#allButton");
@@ -12,6 +16,8 @@ const activeButton = document.querySelector("#activeButton");
 const completedButton = document.querySelector("#completedButton");
 const clearButton = document.querySelector("#clearButton");
 const toDoTotal = document.querySelector("#toDoTotal");
+
+let allCheckboxes = document.querySelectorAll("input[type=checkbox]");
 
 listTemplate.remove();
 delete listTemplate.id;
@@ -21,9 +27,9 @@ let itemsLeft = 0;
 
 // Events
 toggleButton.addEventListener("click", toggleCheckboxes);
-allButton.addEventListener("click", showAll);
-activeButton.addEventListener("click", showActive);
-completedButton.addEventListener("click", showCompleted);
+allButton.addEventListener("click", showAll(originalTaskList));
+activeButton.addEventListener("click", showActive(originalTaskList));
+completedButton.addEventListener("click", showCompleted(originalTaskList));
 clearButton.addEventListener("click", clearCompleted);
 
 form.onsubmit = event => {
@@ -44,7 +50,7 @@ function addToDo() {
     taskElement.querySelector("label").textContent = input.value;
 
     taskElement.removeAttribute("hidden");
-    taskList.append(taskElement);
+    originalTaskList.append(taskElement);
 
     const button = taskElement.querySelector("button");
     const checkbox = taskElement.querySelector("input[type=checkbox]");
@@ -57,7 +63,7 @@ function addToDo() {
     showButton(toggleButton);
     showButton(summaryButtons);
     
-    printToDos();
+    printToDos(counter);
 
     button.onclick = () => {
         taskElement.remove();
@@ -68,7 +74,7 @@ function addToDo() {
             itemsLeft--;
         }
 
-        printToDos();
+        printToDos(counter);
         if (counter === 0) {
             hideButton(toggleButton);
         }
@@ -83,7 +89,7 @@ function removeToDo(){
     
 }
 
-function printToDos() {
+function printToDos(counter) {
     //funkar inte. counter visar 1
     /* if (counter === 0 && checkbox.checked === true){
         toDoTotal.textContent = counter + " items left";
@@ -141,7 +147,7 @@ function completeToDo(checkbox, label) {
     }
 
     // counter--;
-    printToDos();
+    printToDos(counter);
 }
 
 function toggleCheckboxes() {
@@ -168,15 +174,39 @@ function toggleCheckboxes() {
     }
 }
 
+function clearTaskList(taskList){
+    while (taskList.firstChild){
+        taskList.removeChild(taskList.firstChild);
+    }
+}
+
 function showAll() {
-    printToDos();
+    printToDos(counter);
 }
 
-function showActive() {
+function showActive(originalTaskList) {        
+    const activeTaskList = originalTaskList.cloneNode(true);    
+    
+    const taskElements = activeTaskList.querySelectorAll("#rootli li");
+
+    taskElements.forEach(function(taskElement){
+        if(taskElement.checkbox.checked === true){
+            taskList.remove(taskElement);
+        }
+    })
 
 }
 
-function showCompleted() {
+function showCompleted(originalTaskList) {
+    const completedTaskList = originalTaskList.cloneNode(true);
+
+    const taskElements = completedTaskList.querySelectorAll("#rootLi li");
+
+    taskElements.forEach(function(taskElement){
+        if(taskElement.checkbox.checked === false){
+            taskList.remove(taskElement);
+        }
+    })
 
 }
 
