@@ -10,13 +10,11 @@ const listTemplate = document.querySelector("#rootLi");
 const originalTaskList = document.querySelector("#taskList");
 const taskElements = document.querySelectorAll("#rootli li");
 const summaryButtons = document.querySelector("#summaryButtons");
-//const summaryButtons2 = document.querySelectorAll(".summary");
 const allButton = document.querySelector("#allButton");
 const activeButton = document.querySelector("#activeButton");
 const completedButton = document.querySelector("#completedButton");
 const clearButton = document.querySelector("#clearButton");
 const toDoTotal = document.querySelector("#toDoTotal");
-
 
 let allCheckboxes = document.querySelectorAll("input[type=checkbox]");
 
@@ -69,7 +67,7 @@ function addToDo() {
     toDoTotal.hidden = false;
   
 
-    printItems(counter, itemsLeft); //printToDos(counter);
+    printItems(counter, itemsLeft);
 
     deleteButton.onclick = () => {
 
@@ -97,7 +95,7 @@ function removeToDo(checkbox, taskElement) {
     }
 }
 
-function printItems(counter, itemsLeft) {//printToDos(counter) {
+function printItems(counter, itemsLeft) {
 
     if (counter === 0) {
         hideButton(toggleButton);
@@ -112,10 +110,6 @@ function printItems(counter, itemsLeft) {//printToDos(counter) {
         }
     }
     
-    // else if (itemsLeft === 0){
-
-    // }
-
     else if (itemsLeft === 1) {
         toDoTotal.textContent = itemsLeft + " item left";
     }
