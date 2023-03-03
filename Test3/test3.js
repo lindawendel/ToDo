@@ -17,6 +17,7 @@ const completedButton = document.querySelector("#completedButton");
 const clearButton = document.querySelector("#clearButton");
 const toDoTotal = document.querySelector("#toDoTotal");
 
+
 let allCheckboxes = document.querySelectorAll("input[type=checkbox]");
 
 listTemplate.remove();
@@ -52,7 +53,7 @@ function addToDo() {
     taskElement.removeAttribute("hidden");
     originalTaskList.append(taskElement);
 
-    const button = taskElement.querySelector("button");
+    const deleteButton = taskElement.querySelector("#deleteButton");
     const checkbox = taskElement.querySelector("input[type=checkbox]");
     const label = taskElement.querySelector("label");
 
@@ -64,22 +65,14 @@ function addToDo() {
     showButton(allButton);
     showButton(activeButton);
     showButton(completedButton);
+  
 
     printItems(counter, itemsLeft); //printToDos(counter);
 
-    button.onclick = () => {
+    deleteButton.onclick = () => {
 
-        if (checkbox.checked === false) {
-            itemsLeft--;
-        }
+        removeToDo(checkbox, taskElement);
 
-        taskElement.remove();
-        counter--;
-
-        printItems(counter, itemsLeft);
-        if (counter === 0) {
-            hideButton(toggleButton);
-        }
     }
 
     checkbox.addEventListener("change", () => {
@@ -87,8 +80,19 @@ function addToDo() {
     })
 }
 
-function removeToDo() {
+function removeToDo(checkbox, taskElement) {
 
+    if (checkbox.checked === false) {
+        itemsLeft--;
+    }
+
+    taskElement.remove();
+    counter--;
+
+    printItems(counter, itemsLeft);
+    if (counter === 0) {
+        hideButton(toggleButton);
+    }
 }
 
 function printItems(counter, itemsLeft) {//printToDos(counter) {
@@ -99,6 +103,10 @@ function printItems(counter, itemsLeft) {//printToDos(counter) {
         hideButton(activeButton);
         hideButton(completedButton);
         hideButton(clearButton);
+        if (itemsLeft === 0)
+        {
+            toDoTotal.hidden;
+        }
     }
     
     else if (itemsLeft === 0){
