@@ -159,39 +159,45 @@ function toggleCheckboxes() {
     if (count === allCheckboxes.length) {
         for (let b of allCheckboxes) {
             b.checked = false;
-            b.nextElementSibling.style.textDecoration = "none";
+
+            completeToDo(b, b.nextElementSibling)
+            // b.nextElementSibling.style.textDecoration = "none";
             
-            itemsLeft++;
+            // itemsLeft++;
         }
     }
 
     else {
+        
+        itemsLeft =  itemsLeft + count;
+
         for (let b of allCheckboxes) {
             b.checked = true;
 
-            b.nextElementSibling.style.textDecoration = "line-through";
+            completeToDo(b, b.nextElementSibling)
+            // b.nextElementSibling.style.textDecoration = "line-through";
             
-            itemsLeft--;
-            showButton(clearButton);
+            // itemsLeft--;
+            // showButton(clearButton);
         }
     }
 
-    let currentCheckboxes = document.querySelectorAll("input[type=checkbox]")
-    let checkBoxCount = 0;
+    // let currentCheckboxes = document.querySelectorAll("input[type=checkbox]")
+    // let checkBoxCount = 0;
     
-    for (let c of currentCheckboxes) {
-        if (c.checked === true)
-        {
-            checkBoxCount++
-        }
-    }
+    // for (let c of currentCheckboxes) {
+    //     if (c.checked === true)
+    //     {
+    //         checkBoxCount++
+    //     }
+    // }
 
-    if (checkBoxCount === 0)
-    {
-    hideButton(clearButton);
-    }
+    // if (checkBoxCount === 0)
+    // {
+    // hideButton(clearButton);
+    // }
     
-    printItems(counter, itemsLeft)
+    // printItems(counter, itemsLeft)
     
 }
 
