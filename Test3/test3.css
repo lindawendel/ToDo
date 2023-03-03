@@ -76,7 +76,7 @@ header, #container {
 form {
   display: grid;
   grid-template:
-    "a b" / 1fr 9fr;
+    "a b" / min-content auto;
 }
 
 form button {
