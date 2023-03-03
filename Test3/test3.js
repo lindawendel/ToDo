@@ -178,6 +178,7 @@ function clearTaskList(taskList){
     while (taskList.firstChild){
         taskList.removeChild(taskList.firstChild);
     }
+
 }
 
 function showAll() {
@@ -186,6 +187,13 @@ function showAll() {
 
 function showActive(originalTaskList) {        
     const activeTaskList = originalTaskList.cloneNode(true);    
+
+    // for (let t of activeTaskList) {
+    //         if(t.checkbox.checked === true) {
+    //             activeTaskList.remove(t);
+    //         }  
+
+    // }
     
     const taskElements = activeTaskList.querySelectorAll("#rootli li");
 
