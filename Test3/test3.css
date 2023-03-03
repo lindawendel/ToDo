@@ -21,10 +21,23 @@ body {
   justify-self: end;
 }
 
+#new_todo_form{
+  padding: 5px;
+  border-bottom: 1px solid grey;
+}
+
+::placeholder{
+  /*De två raderna nedanför här borde göra att själva rutan runt placeholdern försvinner, men icke*/
+  border: none;
+  outline: none;
+  font: 1rem 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: italic;
+}
+
 #summaryButtons {
   display: grid;
   grid-template: 
-  "a b c d e" /35% 5% 10% 15% 35%;
+  "a b c d e" /31% 10% 13% 15% 31%;
 }
 
 p {
@@ -37,6 +50,11 @@ p {
 
 button {
   border:none;
+  padding: 3px;
+}
+
+button:hover{
+  border: 1px solid grey;
 }
 
 .summary {
@@ -52,18 +70,28 @@ justify-self: center;
   border: 1px solid black;
 }
 
+#summaryButtons{
+  padding: 10px;
+}
 
 li {
   list-style-type: none;
   display: grid;
   /* grid-template-columns: min-content; */
   grid-template:
-    "a b c";
+    "a b c" / 5% 90% 5%;
+    border-bottom: 1px solid grey;
+    padding: 5px;
 }
 
 li input {
   justify-self: start;
   border-radius: 50%;
+}
+
+li label{
+  text-align: left;
+  font: 1rem 'Helvetica Neue', Helvetica, Arial, sans-serif;  
 }
 
 input[type="checkbox"]{
