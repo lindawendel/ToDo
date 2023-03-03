@@ -35,18 +35,23 @@ p {
  justify-self: start;
 }
 
+button {
+  border:none;
+}
+
 .summary {
 justify-self: center;
-border: none;
+/* border: none; */
 }
 
 .summary:hover {
   cursor: pointer;
 }
 
-.summary:active {
- 
+ #allButton:focus,  #activeButton:focus, #completedButton:focus {
+  border: 1px solid black;
 }
+
 
 li {
   list-style-type: none;
