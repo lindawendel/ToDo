@@ -100,6 +100,10 @@ function printItems(counter, itemsLeft) {//printToDos(counter) {
         hideButton(completedButton);
         hideButton(clearButton);
     }
+    
+    else if (itemsLeft === 0){
+
+    }
 
     else if (itemsLeft === 1) {
         toDoTotal.textContent = itemsLeft + " item left";
@@ -177,12 +181,6 @@ function toggleCheckboxes() {
     }
 }
 
-function clearTaskList(taskList) {
-    while (taskList.firstChild) {
-        taskList.removeChild(taskList.firstChild);
-    }
-}
-
 function showAll() {
     const taskElements = document.querySelectorAll("#taskList li");
 
@@ -200,6 +198,7 @@ function showActive() {
 
     taskElements.forEach(task => {
         let checkBox = task.querySelector('input[type="checkbox"]');
+
         if (checkBox.checked) {
             checkBox.parentNode.className = "invisible";
         }
@@ -215,6 +214,7 @@ function showCompleted() {
 
     taskElements.forEach(task => {
         let checkBox = task.querySelector('input[type="checkbox"]');
+
         if (!checkBox.checked) {
             checkBox.parentNode.className = "invisible";
         }
@@ -230,11 +230,11 @@ function clearCompleted() {
 
     taskElements.forEach(task => {
         let checkBox = task.querySelector('input[type="checkbox"]');
+
         if (checkBox.checked) {
             task.remove();
             counter--;
         }
-    })
-    
+    })    
     printItems(counter, itemsLeft);
 }
