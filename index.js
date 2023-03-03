@@ -26,10 +26,10 @@ let itemsLeft = 0;
 
 
 // Events
-
-allButton.addEventListener("click", showAll(originalTaskList));
-activeButton.addEventListener("click", showActive(originalTaskList));
-completedButton.addEventListener("click", showCompleted(originalTaskList));
+toggleButton.addEventListener("click", toggleCheckboxes);
+allButton.addEventListener("click", showAll);
+activeButton.addEventListener("click", showActive);
+completedButton.addEventListener("click", showCompleteds);
 clearButton.addEventListener("click", clearCompleted);
 
 form.onsubmit = event => {
@@ -39,7 +39,6 @@ form.onsubmit = event => {
         addToDo();
     };
 
-    toggleButton.addEventListener("click", toggleCheckboxes);
 }
 
 
@@ -127,7 +126,7 @@ function toggleCheckboxes() {
         for (let b of allCheckboxes) {
             b.checked = false;
             b.nextElementSibling.style.textDecoration = "none";
-            //counter++;                                        TEST
+          
             itemsLeft++;
         }
     }
@@ -135,10 +134,8 @@ function toggleCheckboxes() {
     else {
         for (let b of allCheckboxes) {
             b.checked = true;
-            //b = completeToDo(b, b);
             b.nextElementSibling.style.textDecoration = "line-through";
-        //counter--;                                        TEST
-        //printToDos(counter);
+       
         itemsLeft--;
         showButton(clearButton);
         }
@@ -165,14 +162,12 @@ function toggleCheckboxes() {
 function completeToDo(checkbox, label) {
     if (checkbox.checked === true) {
         label.style.textDecoration = "line-through";
-        //counter--;                                        TEST
-        //printToDos(counter);
+        
         itemsLeft--;
         showButton(clearButton);
     }
     else {
         label.style.textDecoration = "none";
-        //counter++;                                        TEST
         itemsLeft++;
 
         let currentCheckboxes = document.querySelectorAll("input[type=checkbox]")
@@ -191,7 +186,6 @@ function completeToDo(checkbox, label) {
         }
     }
 
-    // counter--;
     printItems(counter, itemsLeft);
 }
 

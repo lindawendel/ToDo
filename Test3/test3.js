@@ -63,7 +63,7 @@ function addToDo() {
     showButton(toggleButton);
     showButton(summaryButtons);
     
-    printToDos(counter);
+    printItems(counter, itemsLeft); //printToDos(counter);
 
     button.onclick = () => {
         taskElement.remove();
@@ -89,11 +89,7 @@ function removeToDo(){
     
 }
 
-function printToDos(counter) {
-    //funkar inte. counter visar 1
-    /* if (counter === 0 && checkbox.checked === true){
-        toDoTotal.textContent = counter + " items left";
-    } */
+function printItems(counter, itemsLeft) {//printToDos(counter) {
 
     if (counter === 0) {
         //hideButton(toggleButton);
@@ -101,11 +97,11 @@ function printToDos(counter) {
     }
 
     else if (counter === 1) {
-        toDoTotal.textContent = counter + " item left";
+        toDoTotal.textContent = itemsLeft + " item left";
     }
 
     else {
-        toDoTotal.textContent = counter + " items left";
+        toDoTotal.textContent = itemsLeft + " items left";
     }
 }
 
@@ -120,14 +116,13 @@ function hideButton(button){
 function completeToDo(checkbox, label) {
     if (checkbox.checked === true) {
         label.style.textDecoration = "line-through";
-        //counter--;                                        TEST
-        //printToDos(counter);
+     
         itemsLeft--;
         showButton(clearButton);
     }
     else {
         label.style.textDecoration = "none";
-        //counter++;                                        TEST
+       
         itemsLeft++;
 
         let currentCheckboxes = document.querySelectorAll("input[type=checkbox]")
@@ -146,8 +141,7 @@ function completeToDo(checkbox, label) {
         }
     }
 
-    // counter--;
-    printToDos(counter);
+    printItems(counter, itemsLeft);
 }
 
 function toggleCheckboxes() {
@@ -164,14 +158,40 @@ function toggleCheckboxes() {
     if (count === allCheckboxes.length) {
         for (let b of allCheckboxes) {
             b.checked = false;
+            b.nextElementSibling.style.textDecoration = "none";
+            
+            itemsLeft++;
         }
     }
 
     else {
         for (let b of allCheckboxes) {
             b.checked = true;
+
+            b.nextElementSibling.style.textDecoration = "line-through";
+            
+            itemsLeft--;
+            showButton(clearButton);
         }
     }
+
+    let currentCheckboxes = document.querySelectorAll("input[type=checkbox]")
+    let checkBoxCount = 0;
+    
+    for (let c of currentCheckboxes) {
+        if (c.checked === true)
+        {
+            checkBoxCount++
+        }
+    }
+
+    if (checkBoxCount === 0)
+    {
+    hideButton(clearButton);
+    }
+    
+    printItems(counter, itemsLeft)
+    
 }
 
 function clearTaskList(taskList){
