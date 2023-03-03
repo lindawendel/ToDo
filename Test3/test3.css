@@ -24,7 +24,7 @@ body {
 #summaryButtons {
   display: grid;
   grid-template: 
-  "a b c d e" /2fr 1fr 1fr 1fr 2fr;
+  "a b c d e" /35% 5% 10% 15% 35%;
 }
 
 p {
