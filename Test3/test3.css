@@ -49,12 +49,21 @@ li {
 
 li input {
   justify-self: start;
+  border-radius: 50%;
 }
 
-/*Försökte få till en rund checkbox
-li input {
+input[type="checkbox"]{
+  appearance: none;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-}*/
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color:bisque;
+}
 
 li button {
   justify-self: end;
