@@ -62,13 +62,12 @@ function addToDo() {
 
     showButton(toggleButton);
     showButton(summaryButtons);
-    
+
     printItems(counter, itemsLeft); //printToDos(counter);
 
     button.onclick = () => {
 
-        if (checkbox.checked === false)
-        {
+        if (checkbox.checked === false) {
             itemsLeft--;
         }
 
@@ -80,14 +79,14 @@ function addToDo() {
             hideButton(toggleButton);
         }
     }
-    
+
     checkbox.addEventListener("change", () => {
         completeToDo(checkbox, label)
     })
 }
 
-function removeToDo(){
-    
+function removeToDo() {
+
 }
 
 function printItems(counter, itemsLeft) {//printToDos(counter) {
@@ -106,39 +105,37 @@ function printItems(counter, itemsLeft) {//printToDos(counter) {
     }
 }
 
-function showButton(button){
+function showButton(button) {
     button.hidden = false;
 }
 
-function hideButton(button){
+function hideButton(button) {
     button.hidden = true;
 }
 
 function completeToDo(checkbox, label) {
     if (checkbox.checked === true) {
         label.style.textDecoration = "line-through";
-     
+
         itemsLeft--;
         showButton(clearButton);
     }
     else {
         label.style.textDecoration = "none";
-       
+
         itemsLeft++;
 
         let currentCheckboxes = document.querySelectorAll("input[type=checkbox]")
         let checkBoxCount = 0;
-        
+
         for (let c of currentCheckboxes) {
-            if (c.checked === true)
-            {
+            if (c.checked === true) {
                 checkBoxCount++
             }
         }
 
-        if (checkBoxCount === 0)
-        {
-        hideButton(clearButton);
+        if (checkBoxCount === 0) {
+            hideButton(clearButton);
         }
     }
 
@@ -160,95 +157,79 @@ function toggleCheckboxes() {
         for (let b of allCheckboxes) {
             b.checked = false;
 
-            completeToDo(b, b.nextElementSibling)     
+            completeToDo(b, b.nextElementSibling)
         }
     }
 
     else {
+        itemsLeft = itemsLeft + count
 
-        itemsLeft =  itemsLeft + count
-  
         for (let b of allCheckboxes) {
             b.checked = true;
 
             completeToDo(b, b.nextElementSibling)
-    
         }
     }
-
 }
 
-function clearTaskList(taskList){
-    while (taskList.firstChild){
+function clearTaskList(taskList) {
+    while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild);
     }
-
 }
 
 function showAll() {
     const taskElements = document.querySelectorAll("#taskList li");
-        
-    taskElements.forEach(task=>{
+
+    taskElements.forEach(task => {
         {
             let checkBox = task.querySelector('input[type="checkbox"]');
-            checkBox.parentNode.className="visible";
+            checkBox.parentNode.className = "visible";
         }
     })
 
     printItems(counter, itemsLeft);
 }
 
-function showActive() {        
-    //const activeTaskList = originalTaskList.cloneNode(true);    
+function showActive() {
 
-    // for (let t of activeTaskList) {
-    //         if(t.checkbox.checked === true) {
-    //             activeTaskList.remove(t);
-    //         }  
-
-    // }
-    
     const taskElements = document.querySelectorAll("#taskList li");
 
-    taskElements.forEach(task=>{
+    taskElements.forEach(task => {
         let checkBox = task.querySelector('input[type="checkbox"]');
-        if(checkBox.checked){
-            checkBox.parentNode.className="invisible";
+        if (checkBox.checked) {
+            checkBox.parentNode.className = "invisible";
         }
-        else{
-            checkBox.parentNode.className="visible";
+        else {
+            checkBox.parentNode.className = "visible";
         }
     })
 }
 
 function showCompleted() {
-    //const completedTaskList = originalTaskList.cloneNode(true);
 
     const taskElements = document.querySelectorAll("#taskList li");
 
-    taskElements.forEach(task=>{
+    taskElements.forEach(task => {
         let checkBox = task.querySelector('input[type="checkbox"]');
-        if(!checkBox.checked){
-            checkBox.parentNode.className="invisible";
+        if (!checkBox.checked) {
+            checkBox.parentNode.className = "invisible";
         }
-        else{
-            checkBox.parentNode.className="visible";
+        else {
+            checkBox.parentNode.className = "visible";
         }
     })
-
 }
 
 function clearCompleted() {
 
     const taskElements = document.querySelectorAll("#taskList li");
 
-    taskElements.forEach(task=>{
+    taskElements.forEach(task => {
         let checkBox = task.querySelector('input[type="checkbox"]');
-        if(checkBox.checked){
-        task.remove();
-        counter--;
+        if (checkBox.checked) {
+            task.remove();
+            counter--;
         }
-        
     })
-
 }
