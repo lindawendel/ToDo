@@ -37,6 +37,15 @@ p {
 
 .summary {
 justify-self: center;
+border: none;
+}
+
+.summary:hover {
+  cursor: pointer;
+}
+
+.summary:active {
+ 
 }
 
 li {
@@ -94,6 +103,7 @@ body {
   text-align: center;
   /* grid-template: */
 }
+
 
 #container {
   display: grid;
