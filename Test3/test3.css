@@ -17,10 +17,26 @@ body {
     /* line-height: 1.4em; */
 }
 
+#clearButton {
+  justify-self: end;
+}
+
 #summaryButtons {
   display: grid;
   grid-template: 
-  "a b c d";
+  "a b c d e" /2fr 1fr 1fr 1fr 2fr;
+}
+
+p {
+  display: grid;
+}
+
+#toDoTotal {
+ justify-self: start;
+}
+
+.summary {
+justify-self: center;
 }
 
 li {
