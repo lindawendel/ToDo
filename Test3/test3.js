@@ -10,7 +10,7 @@ const listTemplate = document.querySelector("#rootLi");
 const originalTaskList = document.querySelector("#taskList");
 const taskElements = document.querySelectorAll("#rootli li");
 const summaryButtons = document.querySelector("#summaryButtons");
-//const summaryButtons = document.querySelectorAll(".summary");
+//const summaryButtons2 = document.querySelectorAll(".summary");
 const allButton = document.querySelector("#allButton");
 const activeButton = document.querySelector("#activeButton");
 const completedButton = document.querySelector("#completedButton");
@@ -61,7 +61,9 @@ function addToDo() {
     input.value = "";
 
     showButton(toggleButton);
-    showButton(summaryButtons);
+    showButton(allButton);
+    showButton(activeButton);
+    showButton(completedButton);
 
     printItems(counter, itemsLeft); //printToDos(counter);
 
@@ -92,8 +94,11 @@ function removeToDo() {
 function printItems(counter, itemsLeft) {//printToDos(counter) {
 
     if (counter === 0) {
-        //hideButton(toggleButton);
-        hideButton(summaryButtons);
+        hideButton(toggleButton);
+        hideButton(allButton);
+        hideButton(activeButton);
+        hideButton(completedButton);
+        hideButton(clearButton);
     }
 
     else if (itemsLeft === 1) {
@@ -187,8 +192,6 @@ function showAll() {
             checkBox.parentNode.className = "visible";
         }
     })
-
-    printItems(counter, itemsLeft);
 }
 
 function showActive() {
@@ -203,7 +206,7 @@ function showActive() {
         else {
             checkBox.parentNode.className = "visible";
         }
-    })
+    })    
 }
 
 function showCompleted() {
@@ -232,4 +235,6 @@ function clearCompleted() {
             counter--;
         }
     })
+    
+    printItems(counter, itemsLeft);
 }

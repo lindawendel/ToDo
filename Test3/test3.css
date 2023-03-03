@@ -95,13 +95,13 @@ body {
   li {
     display: flex;
     flex-direction: row;
-  }
+  }*/
   #deleteButton {
     display: none;
   }
   li:hover #deleteButton {
     display: block;
-  }*/
+  }
 
   .invisible{
     display:none;
