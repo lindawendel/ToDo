@@ -207,7 +207,7 @@ function showAll() {
     taskElements.forEach(task=>{
         {
             let checkBox = task.querySelector('input[type="checkbox"]');
-            checkBox.parentNode.className="test2";
+            checkBox.parentNode.className="visible";
         }
     })
 }
@@ -227,10 +227,10 @@ function showActive() {
     taskElements.forEach(task=>{
         let checkBox = task.querySelector('input[type="checkbox"]');
         if(checkBox.checked){
-            checkBox.parentNode.className="test1";
+            checkBox.parentNode.className="invisible";
         }
         else{
-            checkBox.parentNode.className="test2";
+            checkBox.parentNode.className="visible";
         }
     })
 }
@@ -243,10 +243,10 @@ function showCompleted() {
     taskElements.forEach(task=>{
         let checkBox = task.querySelector('input[type="checkbox"]');
         if(!checkBox.checked){
-            checkBox.parentNode.className="test1";
+            checkBox.parentNode.className="invisible";
         }
         else{
-            checkBox.parentNode.className="test2";
+            checkBox.parentNode.className="visible";
         }
     })
 
