@@ -65,6 +65,8 @@ function addToDo() {
     showButton(allButton);
     showButton(activeButton);
     showButton(completedButton);
+    //toDoTotal.textContent = itemsLeft + " items left";
+    toDoTotal.hidden = false;
   
 
     printItems(counter, itemsLeft); //printToDos(counter);
@@ -105,13 +107,14 @@ function printItems(counter, itemsLeft) {//printToDos(counter) {
         hideButton(clearButton);
         if (itemsLeft === 0)
         {
-            toDoTotal.hidden;
+            toDoTotal.textContent = itemsLeft + " items left";
+            toDoTotal.hidden = true;
         }
     }
     
-    else if (itemsLeft === 0){
+    // else if (itemsLeft === 0){
 
-    }
+    // }
 
     else if (itemsLeft === 1) {
         toDoTotal.textContent = itemsLeft + " item left";
