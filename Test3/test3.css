@@ -65,10 +65,10 @@ body {
     display: block;
   }*/
 
-  .test1{
+  .invisible{
     display:none;
   }
 
-  .test2{
+  .visible{
     display: grid;
   }
