@@ -29,7 +29,7 @@ let itemsLeft = 0;
 toggleButton.addEventListener("click", toggleCheckboxes);
 allButton.addEventListener("click", showAll);
 activeButton.addEventListener("click", showActive);
-completedButton.addEventListener("click", showCompleteds);
+completedButton.addEventListener("click", showCompleted);
 clearButton.addEventListener("click", clearCompleted);
 
 form.onsubmit = event => {
@@ -81,8 +81,6 @@ function addToDo() {
             hideButton(toggleButton);
         }
     }
-
-   
     
     checkbox.addEventListener("change", () => {
         completeToDo(checkbox, label)
@@ -199,7 +197,7 @@ function hideButton(button){
 }
 
 function showAll() {
-    printItems(counter);
+    printItems(counter, itemsLeft);
     
 }
 

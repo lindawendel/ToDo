@@ -66,15 +66,16 @@ function addToDo() {
     printItems(counter, itemsLeft); //printToDos(counter);
 
     button.onclick = () => {
-        taskElement.remove();
-        counter--;
 
-        if (button.checked === false)
+        if (checkbox.checked === false)
         {
             itemsLeft--;
         }
 
-        printToDos(counter);
+        taskElement.remove();
+        counter--;
+
+        printItems(counter, itemsLeft);
         if (counter === 0) {
             hideButton(toggleButton);
         }
@@ -96,7 +97,7 @@ function printItems(counter, itemsLeft) {//printToDos(counter) {
         hideButton(summaryButtons);
     }
 
-    else if (counter === 1) {
+    else if (itemsLeft === 1) {
         toDoTotal.textContent = itemsLeft + " item left";
     }
 
@@ -210,6 +211,8 @@ function showAll() {
             checkBox.parentNode.className="test2";
         }
     })
+
+    printItems(counter, itemsLeft);
 }
 
 function showActive() {        
