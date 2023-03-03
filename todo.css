@@ -4,72 +4,63 @@
   padding: 0;
 }
 
-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  /* position: relative; */
+li {
+  list-style-type: none;
+  display: grid;
+  /* grid-template-columns: min-content; */
+  grid-template:
+    "a b c";
 }
 
-/* label > input[type="checkbox"] {
-    display: none;
-  } */
-/* 
-  label > input[type="checkbox"].removebox {
-    display: none;
-    position: absolute;
-    z-index: 1;
-  } */
+li input {
+  justify-self: start;
+}
 
-/* label:hover > input[type="checkbox"].removebox {
-    display: inline-block;
-  }
-   */
-/* label:hover > input[type="checkbox"].removebox + label {
-    display: inline-block;
-  }
-  
-  .removebox + label {
-    display: none;
-  } */
+/*Försökte få till en rund checkbox
+li input {
+  border-radius: 50%;
+}*/
 
-
-/* label.removebox:hover > input[type="checkbox"].removebox {
-    display: inline-block;
-  } */
-
-
-
-/* By setting position: absolute on the removebox element, it will be 
-  taken out of the normal document flow and positioned relative to its closest 
-  positioned ancestor (in this case, the label element). Then by setting z-index: 1, 
-  you ensure that the removebox element appears on top of any other elements with 
-  a lower z-index value. */
-
-label:hover>input[type="checkbox"].removebox {
-  display: inline-block;
+li button {
+  justify-self: end;
 }
 
 
-body {
+form {
   display: grid;
   grid-template:
-    "a"
-    "b"
-    "c"
-  ;
+    "a b" / 1fr 9fr;
 }
 
-header {
-  grid-area: a;
+form button {
+  justify-self: start;
+  grid-area: "a";
 }
 
-main {
+form input {
   grid-area: b;
 }
 
-footer {
-  grid-area: c;
+body {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  /* grid-template: */
 }
 
-/* footer {grid-area: d;} */
+#container {
+  display: grid;
+}
+
+/*Kopierar in Jakobs kod för att dölja button. Den funkar men objekten läggs inte på rätt ställe:
+  
+  li {
+    display: flex;
+    flex-direction: row;
+  }
+  #deleteButton {
+    display: none;
+  }
+  li:hover #deleteButton {
+    display: block;
+  }*/

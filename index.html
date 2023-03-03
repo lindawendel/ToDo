@@ -15,19 +15,37 @@
     <header>
         <h1>todos</h1>
     </header>
-    <main>
-        <div id="container"> 
-            <form id="new_todo_form">
-                <input type="text" id="new_todo" placeholder="What needs to be done?">
-                <!-- <button type="submit">Add</button> -->
-            </form>
-            <ul id="list"></ul>
+
+    <div id="container">
+        <form id="new_todo_form">
+            <button type="button" hidden id="toggleButton">🔽</button>
+            <input type="text" id="new_todo" placeholder="What needs to be done?">
+        </form>
+
+        <ul id="taskList"></ul>
+        <li hidden id="rootLi">
+            <input type="checkbox">
+            <label>TEST</label>
+            <button type="button" id="deleteButton">❌</button>
+        </li>
+
+        <div id="toDoSummary">
+            <div id="summaryButtons" hidden>
+                <p> <output id="toDoTotal"></output></p>
+                <button type="button" class= "summary" id="allButton">All</button>
+                <button type="button" class= "summary" id="activeButton">Active</button>
+                <button type="button" class= "summary" id="completedButton">Completed</button>
+                <!-- </div>
+                <div id="clearButton" hidden> -->
+                <button type="button" hidden id="clearButton">Clear completed</button>
             </div>
-    </main>
-<footer>
-    <p>Double-click to edit a todo</p>
-    <p>Written by Magnus Könberg and Linda Wendel</p>
-</footer>
-    
+        </div>
+    </div>
+
+    <footer>
+        <p>Written by Magnus Könberg and Linda Wendel</p>
+    </footer>
+
 </body>
+
 </html>

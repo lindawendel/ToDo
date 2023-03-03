@@ -1,9 +1,0 @@
-//As in Jakobs lecture
-
-{
-    "compilerOptions": {
-        "target": "ES6",
-        "lib": ["ES6", "DOM"],
-        "sourceMap": true
-    }
-}

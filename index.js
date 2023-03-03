@@ -1,70 +1,248 @@
-// https://www.youtube.com/watch?v=jBmrduvKl5w&t=191s
-//Add textcontent= X to button?
-// ❌
-const list = document.querySelector("#list");
-const form = document.querySelector("#new_todo_form");
+// Variables
+const form = document.querySelector("form");
+const toggleButton = document.querySelector("#toggleButton");
+
+//Används inte?!
+//const taskTemplate = document.querySelector("#new_todo_form"); 
+
 const input = document.querySelector("#new_todo");
-const tasks = [];
-let counter = 1;
-// let taskId: string = "1"; 
-form === null || form === void 0 ? void 0 : form.addEventListener("submit", e => {
-    e.preventDefault();
-    if ((input === null || input === void 0 ? void 0 : input.value) == "" || (input === null || input === void 0 ? void 0 : input.value) == null)
-        return;
-    const newTask = {
-        id: counter,
-        title: input.value,
-        completed: false,
-        remove: false,
-        createdAt: new Date(),
+const listTemplate = document.querySelector("#rootLi");
+const originalTaskList = document.querySelector("#taskList");
+const taskElements = document.querySelectorAll("#rootli li");
+const summaryButtons = document.querySelector("#summaryButtons");
+//const summaryButtons = document.querySelectorAll(".summary");
+const allButton = document.querySelector("#allButton");
+const activeButton = document.querySelector("#activeButton");
+const completedButton = document.querySelector("#completedButton");
+const clearButton = document.querySelector("#clearButton");
+const toDoTotal = document.querySelector("#toDoTotal");
+
+let allCheckboxes = document.querySelectorAll("input[type=checkbox]");
+
+listTemplate.remove();
+delete listTemplate.id;
+let counter = 0;
+let itemsLeft = 0;
+
+
+// Events
+
+allButton.addEventListener("click", showAll(originalTaskList));
+activeButton.addEventListener("click", showActive(originalTaskList));
+completedButton.addEventListener("click", showCompleted(originalTaskList));
+clearButton.addEventListener("click", clearCompleted);
+
+form.onsubmit = event => {
+    event.preventDefault();
+
+    if (input.value !== null && input.value !== "") {
+        addToDo();
     };
-    console.log('new task object:', newTask);
-    tasks.push(newTask);
-    addListItem(newTask);
-    input.value = "";
-});
-function addListItem(task) {
-    console.log('addListItem called with task:', task);
-    const item = document.createElement("li");
-    const label = document.createElement("label");
-    //     The htmlFor property in HTML is used to associate a label element with an input element. 
-    //     It is commonly used to give focus to an input element when the label is clicked.
-    // CheckLabel is a newly created label element, and checkbox is a newly created input element. 
-    //  The line checkLabel.htmlFor = checkbox-${task.id}; sets the htmlFor attribute of the label to the 
-    //  string checkbox-${task.id}, where task.id is the id of the current task object. 
-    //  This creates a relationship between the label and input elements such that when the label element
-    //   is clicked, the associated input element with an id of checkbox-${task.id} will receive focus.
-    // So when the user clicks on the label element, it will toggle the checkbox for the corresponding task.
-    const checkLabel = document.createElement("label");
-    checkLabel.htmlFor = `checkbox-${task.id}`;
-    checkLabel.classList.add("checkbox");
-    const checkbox = document.createElement("input");
-    checkbox.name = "checkbox";
-    checkbox.type = "checkbox";
-    checkbox.checked = task.completed;
-    checkbox.addEventListener("change", () => {
-        task.completed = checkbox.checked;
-        // console.log(tasks)
-    });
-    checkLabel.appendChild(checkbox);
-    //Create textnode to contain the X-emoji?
-    const removeBtn = document.createElement("button");
-    removeBtn.textContent = "❌";
-    removeBtn.name = "removeBtn";
-    // + counter
-    // removebox.style.display = "none"
-    // removeBtn.addEventListener ("change", () => {
-    //     task.remove = removebox.checked 
-    //     item.remove()
-    // } )
-    const removeLabel = document.createElement("label");
-    removeLabel.htmlFor = `removeBtn-${task.id}`;
-    removeLabel.classList.add("removeBtn");
-    removeLabel.appendChild(removeBtn);
-    label.append(checkLabel, task.title, removeLabel);
-    item.append(label);
-    list.append(item);
-    counter++;
-    console.log(removeBtn);
+
+    toggleButton.addEventListener("click", toggleCheckboxes);
 }
-//# sourceMappingURL=index.js.map
+
+
+// Functions
+function addToDo() {
+
+    // Clone the question template in the HTML and insert the question prompt.
+    const taskElement = listTemplate.cloneNode(true);
+
+    taskElement.querySelector("label").textContent = input.value;
+
+    taskElement.removeAttribute("hidden");
+    originalTaskList.append(taskElement);
+
+    const button = taskElement.querySelector("button");
+    const checkbox = taskElement.querySelector("input[type=checkbox]");
+    const label = taskElement.querySelector("label");
+
+    counter++;
+    itemsLeft++;
+    input.value = "";
+
+    showButton(toggleButton);
+    showButton(summaryButtons);
+    
+    printItems(counter, itemsLeft);
+
+    button.onclick = () => {
+
+        if (checkbox.checked === false)
+        {
+            itemsLeft--;
+        }
+
+        taskElement.remove();
+        counter--;
+
+        printItems(counter, itemsLeft);
+        if (counter === 0) {
+            hideButton(toggleButton);
+        }
+    }
+
+   
+    
+    checkbox.addEventListener("change", () => {
+        completeToDo(checkbox, label)
+    })
+}
+
+function removeToDo(){
+    
+}
+
+
+function printItems(counter, itemsLeft) {
+
+    if (counter === 0) {
+        //hideButton(toggleButton);
+        hideButton(summaryButtons);
+    }
+
+    else if (itemsLeft === 1) {
+        toDoTotal.textContent = itemsLeft+ " item left";
+    }
+
+    else {
+        toDoTotal.textContent = itemsLeft+ " items left";
+    }
+}
+
+
+function toggleCheckboxes() {
+    const allCheckboxes = document.querySelectorAll("input[type=checkbox]");
+
+    let count = 0;
+
+    for (let b of allCheckboxes) {
+        if (b.checked) {
+            count++;
+        }
+    }
+
+    if (count === allCheckboxes.length) {
+        for (let b of allCheckboxes) {
+            b.checked = false;
+            b.nextElementSibling.style.textDecoration = "none";
+            //counter++;                                        TEST
+            itemsLeft++;
+        }
+    }
+
+    else {
+        for (let b of allCheckboxes) {
+            b.checked = true;
+            //b = completeToDo(b, b);
+            b.nextElementSibling.style.textDecoration = "line-through";
+        //counter--;                                        TEST
+        //printToDos(counter);
+        itemsLeft--;
+        showButton(clearButton);
+        }
+    }
+
+    let currentCheckboxes = document.querySelectorAll("input[type=checkbox]")
+    let checkBoxCount = 0;
+    
+    for (let c of currentCheckboxes) {
+        if (c.checked === true)
+        {
+            checkBoxCount++
+        }
+    }
+
+    if (checkBoxCount === 0)
+    {
+    hideButton(clearButton);
+    }
+    
+    printItems(counter, itemsLeft)
+}
+
+function completeToDo(checkbox, label) {
+    if (checkbox.checked === true) {
+        label.style.textDecoration = "line-through";
+        //counter--;                                        TEST
+        //printToDos(counter);
+        itemsLeft--;
+        showButton(clearButton);
+    }
+    else {
+        label.style.textDecoration = "none";
+        //counter++;                                        TEST
+        itemsLeft++;
+
+        let currentCheckboxes = document.querySelectorAll("input[type=checkbox]")
+        let checkBoxCount = 0;
+        
+        for (let c of currentCheckboxes) {
+            if (c.checked === true)
+            {
+                checkBoxCount++
+            }
+        }
+
+        if (checkBoxCount === 0)
+        {
+        hideButton(clearButton);
+        }
+    }
+
+    // counter--;
+    printItems(counter, itemsLeft);
+}
+
+
+function showButton(button){
+    button.hidden = false;
+}
+
+function hideButton(button){
+    button.hidden = true;
+}
+
+function showAll() {
+    printItems(counter);
+    
+}
+
+function showActive(originalTaskList) {        
+    // const activeTaskList = originalTaskList.cloneNode(true);    
+
+    // for (let t of activeTaskList) {
+    //         if(t.checkbox.checked === true) {
+    //             activeTaskList.remove(t);
+    //         }  
+
+    // }
+    
+    // const taskElements = activeTaskList.querySelectorAll("#rootli li");
+
+    // taskElements.forEach(function(taskElement){
+    //     if(taskElement.checkbox.checked === true){
+    //         taskList.remove(taskElement);
+    //     }
+    // })
+
+}
+
+function showCompleted(originalTaskList) {
+    // const completedTaskList = originalTaskList.cloneNode(true);
+
+    // const taskElements = completedTaskList.querySelectorAll("#rootLi li");
+
+    // taskElements.forEach(function(taskElement){
+    //     if(taskElement.checkbox.checked === false){
+    //         taskList.remove(taskElement);
+    //     }
+    // })
+
+}
+
+function clearCompleted() {
+
+}
+
