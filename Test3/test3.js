@@ -160,45 +160,22 @@ function toggleCheckboxes() {
         for (let b of allCheckboxes) {
             b.checked = false;
 
-            completeToDo(b, b.nextElementSibling)
-            // b.nextElementSibling.style.textDecoration = "none";
-            
-            // itemsLeft++;
+            completeToDo(b, b.nextElementSibling)     
         }
     }
 
     else {
-        
-        itemsLeft =  itemsLeft + count;
 
+        itemsLeft =  itemsLeft + count
+  
         for (let b of allCheckboxes) {
             b.checked = true;
 
             completeToDo(b, b.nextElementSibling)
-            // b.nextElementSibling.style.textDecoration = "line-through";
-            
-            // itemsLeft--;
-            // showButton(clearButton);
+    
         }
     }
 
-    // let currentCheckboxes = document.querySelectorAll("input[type=checkbox]")
-    // let checkBoxCount = 0;
-    
-    // for (let c of currentCheckboxes) {
-    //     if (c.checked === true)
-    //     {
-    //         checkBoxCount++
-    //     }
-    // }
-
-    // if (checkBoxCount === 0)
-    // {
-    // hideButton(clearButton);
-    // }
-    
-    // printItems(counter, itemsLeft)
-    
 }
 
 function clearTaskList(taskList){
@@ -262,5 +239,16 @@ function showCompleted() {
 }
 
 function clearCompleted() {
+
+    const taskElements = document.querySelectorAll("#taskList li");
+
+    taskElements.forEach(task=>{
+        let checkBox = task.querySelector('input[type="checkbox"]');
+        if(checkBox.checked){
+        task.remove();
+        counter--;
+        }
+        
+    })
 
 }
