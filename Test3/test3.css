@@ -64,3 +64,11 @@ body {
   li:hover #deleteButton {
     display: block;
   }*/
+
+  .test1{
+    display:none;
+  }
+
+  .test2{
+    display: grid;
+  }

@@ -27,9 +27,9 @@ let itemsLeft = 0;
 
 // Events
 toggleButton.addEventListener("click", toggleCheckboxes);
-allButton.addEventListener("click", showAll(originalTaskList));
-activeButton.addEventListener("click", showActive(originalTaskList));
-completedButton.addEventListener("click", showCompleted(originalTaskList));
+allButton.addEventListener("click", showAll);
+activeButton.addEventListener("click", showActive);
+completedButton.addEventListener("click", showCompleted);
 clearButton.addEventListener("click", clearCompleted);
 
 form.onsubmit = event => {
@@ -182,11 +182,18 @@ function clearTaskList(taskList){
 }
 
 function showAll() {
-    printToDos(counter);
+    const taskElements = document.querySelectorAll("#taskList li");
+        
+    taskElements.forEach(task=>{
+        {
+            let checkBox = task.querySelector('input[type="checkbox"]');
+            checkBox.parentNode.className="test2";
+        }
+    })
 }
 
-function showActive(originalTaskList) {        
-    const activeTaskList = originalTaskList.cloneNode(true);    
+function showActive() {        
+    //const activeTaskList = originalTaskList.cloneNode(true);    
 
     // for (let t of activeTaskList) {
     //         if(t.checkbox.checked === true) {
@@ -195,24 +202,31 @@ function showActive(originalTaskList) {
 
     // }
     
-    const taskElements = activeTaskList.querySelectorAll("#rootli li");
+    const taskElements = document.querySelectorAll("#taskList li");
 
-    taskElements.forEach(function(taskElement){
-        if(taskElement.checkbox.checked === true){
-            taskList.remove(taskElement);
+    taskElements.forEach(task=>{
+        let checkBox = task.querySelector('input[type="checkbox"]');
+        if(checkBox.checked){
+            checkBox.parentNode.className="test1";
+        }
+        else{
+            checkBox.parentNode.className="test2";
         }
     })
-
 }
 
-function showCompleted(originalTaskList) {
-    const completedTaskList = originalTaskList.cloneNode(true);
+function showCompleted() {
+    //const completedTaskList = originalTaskList.cloneNode(true);
 
-    const taskElements = completedTaskList.querySelectorAll("#rootLi li");
+    const taskElements = document.querySelectorAll("#taskList li");
 
-    taskElements.forEach(function(taskElement){
-        if(taskElement.checkbox.checked === false){
-            taskList.remove(taskElement);
+    taskElements.forEach(task=>{
+        let checkBox = task.querySelector('input[type="checkbox"]');
+        if(!checkBox.checked){
+            checkBox.parentNode.className="test1";
+        }
+        else{
+            checkBox.parentNode.className="test2";
         }
     })
 
