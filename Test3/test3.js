@@ -241,5 +241,7 @@ function clearCompleted() {
             counter--;
         }
     })    
+
+    hideButton(clearButton);
     printItems(counter, itemsLeft);
 }
