@@ -204,7 +204,7 @@ function showAll(event) {
   }
   
   const clickedButton = event.target;
-  clickedButton.style.border = '1px solid black';
+  clickedButton.style.border = '1px solid rgba(175, 47, 47, 0.15)';
   activeButtonRef = clickedButton;
 
 }
@@ -229,7 +229,7 @@ function showActive(event) {
   }
   
   const clickedButton = event.target;
-  clickedButton.style.border = '1px solid black';
+  clickedButton.style.border = '1px solid rgba(175, 47, 47, 0.15)';
   activeButtonRef = clickedButton;
 }
 
@@ -253,7 +253,7 @@ function showCompleted(event) {
       }
       
       const clickedButton = event.target;
-      clickedButton.style.border = '1px solid black';
+      clickedButton.style.border = '1px solid rgba(175, 47, 47, 0.15)';
       activeButtonRef = clickedButton;
     
 }
