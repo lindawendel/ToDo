@@ -186,7 +186,9 @@ function toggleCheckboxes() {
     }
 }
 
-function showAll() {
+let activeButtonRef = null;                 //Flytta variabel till början av dok? 
+
+function showAll(event) {
     const taskElements = document.querySelectorAll("#taskList li");
 
     taskElements.forEach(task => {
@@ -195,9 +197,19 @@ function showAll() {
             checkBox.parentNode.className = "visible";
         }
     })
+
+    
+  if (activeButtonRef !== null) {
+    activeButtonRef.style.border = 'none';
+  }
+  
+  const clickedButton = event.target;
+  clickedButton.style.border = '1px solid black';
+  activeButtonRef = clickedButton;
+
 }
 
-function showActive() {
+function showActive(event) {
 
     const taskElements = document.querySelectorAll("#taskList li");
 
@@ -210,10 +222,18 @@ function showActive() {
         else {
             checkBox.parentNode.className = "visible";
         }
-    })    
+    })  
+    
+  if (activeButtonRef !== null) {
+    activeButtonRef.style.border = 'none';
+  }
+  
+  const clickedButton = event.target;
+  clickedButton.style.border = '1px solid black';
+  activeButtonRef = clickedButton;
 }
 
-function showCompleted() {
+function showCompleted(event) {
 
     const taskElements = document.querySelectorAll("#taskList li");
 
@@ -227,6 +247,15 @@ function showCompleted() {
             checkBox.parentNode.className = "visible";
         }
     })
+    
+    if (activeButtonRef !== null) {
+        activeButtonRef.style.border = 'none';
+      }
+      
+      const clickedButton = event.target;
+      clickedButton.style.border = '1px solid black';
+      activeButtonRef = clickedButton;
+    
 }
 
 function clearCompleted() {
