@@ -55,7 +55,7 @@ form input::placeholder {
 #toggleButton {
   font-size: 22px;
 }
-#toDoTotal, .summary {
+#toDoTotal, #clearButton, .summary {
   color: #777;
 }
 
