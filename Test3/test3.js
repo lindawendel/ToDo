@@ -19,7 +19,8 @@ const toDoTotal = document.querySelector("#toDoTotal");
 let allCheckboxes = document.querySelectorAll("input[type=checkbox]");
 
 listTemplate.remove();
-delete listTemplate.id;
+listTemplate.removeAttribute("id");
+
 let counter = 0;
 let itemsLeft = 0;
 
