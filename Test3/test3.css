@@ -34,7 +34,7 @@ body {
 }
 
 #new_todo {
-  font-size: 24px;
+  font-size: 22px;
   color: #4d4d4d;
   border: none;
 }
@@ -48,14 +48,21 @@ body {
   border-bottom: 1px solid grey;
 }
 
+form input::placeholder {
+  font-size: 22px; /* set the font size */
+}
+
+#toggleButton {
+  font-size: 22px;
+}
 #toDoTotal, .summary {
   color: #777;
 }
 
 ::placeholder{
-  /*De två raderna nedanför här borde göra att själva rutan runt placeholdern försvinner, men icke*/
-  border: none;
-  outline: none;
+  /* De två raderna nedanför här borde göra att själva rutan runt placeholdern försvinner, men icke */
+  /* border: none;
+  outline: none; */
   font: 1rem 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: italic;
 }
@@ -113,11 +120,13 @@ li {
 li input {
   justify-self: start;
   border-radius: 50%;
+  align-self: center;
+  
 }
 
 li label{
   text-align: left;
-  font: 1rem 'Helvetica Neue', Helvetica, Arial, sans-serif;  
+  font: 24px 'Helvetica Neue', Helvetica, Arial, sans-serif;  
 }
 
 input[type="checkbox"]{
@@ -144,7 +153,7 @@ header, #container {
 form {
   display: grid;
   grid-template:
-    "a b" / min-content auto;
+    "a b" / 40px 510px;
 }
 
 form button {
