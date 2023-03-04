@@ -35,6 +35,12 @@ body {
 
 #new_todo {
   font-size: 24px;
+  color: #4d4d4d;
+  border: none;
+}
+
+#new_todo:focus {
+  outline: none;
 }
 
 #new_todo_form{
