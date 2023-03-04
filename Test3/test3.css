@@ -11,26 +11,39 @@ h1 {
   
 }
 
-
-
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: #f5f5f5;
-    /* line-height: 1.4em; */
+}
+
+#container {
+  line-height: 1.4em;
+  font-weight: 300;
+}
+
+#taskList {
+  color: #4d4d4d;
 }
 
 #container, button {
   background:  #fff;
 }
 
-
 #clearButton {
   justify-self: end;
+}
+
+#new_todo {
+  font-size: 24px;
 }
 
 #new_todo_form{
   padding: 5px;
   border-bottom: 1px solid grey;
+}
+
+#toDoTotal, .summary {
+  color: #777;
 }
 
 ::placeholder{
