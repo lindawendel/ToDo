@@ -56,7 +56,7 @@ function addToDo() {
     itemsLeft++;
     input.value = "";
 
-    if (counter >= 1){
+    if (counter >= 1) {
         form.style.borderBottom = "1px solid lightgray";
     }
 
@@ -111,7 +111,7 @@ function printItems(counter, itemsLeft) {
             toDoTotal.hidden = true;
             form.style.borderBottom = "none";
         }
-    }    
+    }
 
     else if (itemsLeft === 1) {
         toDoTotal.textContent = itemsLeft + " item left";
