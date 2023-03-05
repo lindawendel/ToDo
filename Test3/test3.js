@@ -57,7 +57,7 @@ function addToDo() {
     input.value = "";
 
     if (counter >= 1){
-        form.style.borderBottom = "1px solid grey";
+        form.style.borderBottom = "1px solid lightgray";
     }
 
     showButton(toggleButton);
