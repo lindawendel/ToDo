@@ -250,7 +250,8 @@ body {
       grid-template: 
       "a b c d e" /30% 7% 13% 20% 30%;
 
-  }
+    }
+  } 
 
   @media (max-width: 600px) {
 
