@@ -44,6 +44,11 @@ footer {
   justify-self: end;
 }
 
+#clearButton:hover {
+  cursor: pointer;
+  text-decoration-line: underline;
+}
+
 #new_todo {
   font-size: 22px;
   color: #4d4d4d;
@@ -106,7 +111,9 @@ button {
 .summary {
 justify-self: center;
 border-radius: 3px; 
-padding: 3px;
+padding-left: 3px;
+padding-right: 3px;;
+
 
 /* border: none; */
 }
