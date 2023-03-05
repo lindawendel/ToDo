@@ -21,8 +21,6 @@ body {
   line-height: 1.4em;
   font-weight: 300;
   box-shadow: 3px 3px 15px rgb(0 0 0 / 20%);
-  /* padding-top: 10px;
-  padding-bottom: 10px; */
 }
 
 #taskList {
@@ -114,10 +112,6 @@ button {
   padding-left: 3px;
   padding-right: 3px;
 }
-
-/* #allButton:focus,  #activeButton:focus, #completedButton:focus {
-  border: 1px solid black;
-} */
 
 #summaryButtons {
   padding: 10px;

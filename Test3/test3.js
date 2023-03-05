@@ -39,7 +39,6 @@ form.onsubmit = event => {
 // Functions
 function addToDo() {
 
-    // Clone the question template in the HTML and insert the question prompt.
     const taskElement = listTemplate.cloneNode(true);
 
     taskElement.querySelector("label").textContent = input.value;
