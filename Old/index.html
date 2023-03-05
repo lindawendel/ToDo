@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A ToDo-list to help you manage everyday work- and personal life!">
     <title>todos</title>
-    <script src="main.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="todo.css">
 </head>
 
 <body>
@@ -25,16 +25,18 @@
         <ul id="taskList"></ul>
         <li hidden id="rootLi">
             <input type="checkbox">
-            <label></label>
+            <label>TEST</label>
             <button type="button" id="deleteButton">❌</button>
         </li>
 
-        <div id="toDoSummary" hidden>
-            <div id="summaryButtons">
+        <div id="toDoSummary">
+            <div id="summaryButtons" hidden>
                 <p> <output id="toDoTotal"></output></p>
-                <button type="button" class="summary" id="allButton" hidden>All</button>
-                <button type="button" class="summary" id="activeButton" hidden>Active</button>
-                <button type="button" class="summary" id="completedButton" hidden>Completed</button>
+                <button type="button" class= "summary" id="allButton">All</button>
+                <button type="button" class= "summary" id="activeButton">Active</button>
+                <button type="button" class= "summary" id="completedButton">Completed</button>
+                <!-- </div>
+                <div id="clearButton" hidden> -->
                 <button type="button" hidden id="clearButton">Clear completed</button>
             </div>
         </div>

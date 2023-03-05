@@ -1,0 +1,303 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: rgba(175, 47, 47, 0.15);
+  font-size: 100px;
+  font-weight: 100;
+  padding-top: 10px;
+  padding-bottom: 8px;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #f5f5f5;
+}
+
+#container {
+  line-height: 1.4em;
+  font-weight: 300;
+  box-shadow: 3px 3px 15px rgb(0 0 0 / 20%);
+}
+
+#taskList {
+  color: #4d4d4d;
+}
+
+footer {
+  color: #bfbfbf;
+  padding: 50px;
+  font-size: 10px;
+}
+
+#container,
+button {
+  background: #fff;
+}
+
+#clearButton {
+  justify-self: end;
+}
+
+#clearButton:hover {
+  cursor: pointer;
+  text-decoration-line: underline;
+}
+
+#new_todo {
+  font-size: 22px;
+  color: #4d4d4d;
+  border: none;
+}
+
+#new_todo:focus {
+  outline: none;
+}
+
+#new_todo_form {
+  padding: 15px 5px;
+}
+
+form input::placeholder {
+  font-size: 22px;
+  color: #bfbfbf;
+}
+
+#toggleButton {
+  font-size: 22px;
+}
+
+#toDoTotal,
+#clearButton,
+.summary {
+  color: #777;
+  font-size: 14px;
+}
+
+::placeholder {
+  font: 1rem 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: italic;
+}
+
+#summaryButtons {
+  display: grid;
+  grid-template:
+    "a b c d e" /34% 7% 10% 15% 34%;
+  align-items: center;
+}
+
+p {
+  display: grid;
+}
+
+#toDoTotal {
+  justify-self: start;
+}
+
+button {
+  border: none;
+}
+
+.summary:hover {
+  border: 1px solid rgba(175, 47, 47, 0.15);
+  cursor: pointer;
+}
+
+.summary {
+  justify-self: center;
+  border-radius: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+#summaryButtons {
+  padding: 10px;
+}
+
+li {
+  list-style-type: none;
+  display: grid;
+  grid-template:
+    "a b c" / 40px 460px 40px;
+  border-bottom: 1px solid lightgray;
+  padding: 5px;
+}
+
+li input {
+  justify-self: start;
+  border-radius: 50%;
+  align-self: center;
+
+}
+
+li label {
+  text-align: left;
+  font: 22px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+input[type="checkbox"] {
+  margin-left: 4px;
+  width: 20px;
+  height: 20px;
+}
+
+li button {
+  justify-self: end;
+}
+
+header,
+#container {
+  width: 550px;
+}
+
+form {
+  align-items: center;
+  display: grid;
+  grid-template:
+    "a b" / 40px 500px;
+}
+
+form button {
+  justify-self: start;
+  grid-area: "a";
+}
+
+form input {
+  grid-area: b;
+}
+
+body {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+
+#container {
+  display: grid;
+}
+
+#taskList {
+  display: grid;
+}
+
+#deleteButton {
+  display: none;
+}
+
+li:hover #deleteButton {
+  display: block;
+}
+
+.invisible {
+  display: none;
+}
+
+.visible {
+  display: grid;
+}
+
+@media (max-width: 800px) {
+
+  #container,
+  header,
+  ul {
+    width: 450px;
+  }
+
+  form {
+    grid-template:
+      "a b" / 40px 400px;
+  }
+
+  li {
+    grid-template:
+      "a b c" / 40px 360px 40px;
+  }
+
+  #summaryButtons {
+    display: grid;
+    grid-template:
+      "a b c d e" /30% 7% 13% 20% 30%;
+  }
+}
+
+@media (max-width: 600px) {
+
+  #container,
+  header,
+  ul {
+    width: 350px;
+  }
+
+  form {
+    grid-template:
+      "a b" / 40px 300px;
+  }
+
+  li {
+    grid-template:
+      "a b c" / 40px 260px 40px;
+  }
+
+  #summaryButtons {
+    font-size: 12px;
+    display: grid;
+    grid-template:
+      "a b c d e" /25% 7% 18% 25% 25%;
+  }
+
+  form input::placeholder {
+    font-size: 18px;
+  }
+
+  #toggleButton {
+    font-size: 18px;
+  }
+
+  #new_todo {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 60px;
+  }
+
+  li label {
+    font-size: 18px;
+  }
+
+  input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+  }
+
+  footer {
+    padding: 40px;
+  }
+}
+
+/* Det här är kod från ChatGpt för att underlätta för andra webläsare. Men vi har enbart denna typ av tillägg för font-size. 
+  Kanske onödigt?  */
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  font-size: 16px;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 16px;
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  font-size: 16px;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 16px;
+}
