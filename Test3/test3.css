@@ -152,6 +152,12 @@ li label{
 }
 
 input[type="checkbox"]{
+  align-self: center;
+  width: 20px;
+  height: 20px;
+}
+
+/* input[type="checkbox"]{
   appearance: none;
   width: 20px;
   height: 20px;
@@ -164,7 +170,7 @@ input[type="checkbox"]{
 input[type="checkbox"]:checked {
   background-color: bisque;
   
-}
+} */
 
 li button {
   justify-self: end;
