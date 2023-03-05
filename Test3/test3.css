@@ -67,7 +67,8 @@ footer {
 }
 
 form input::placeholder {
-  font-size: 22px; 
+  font-size: 22px;
+  color:#bfbfbf; 
 }
 
 #toggleButton {
