@@ -48,13 +48,14 @@ function addToDo() {
     const taskElement = listTemplate.cloneNode(true);
 
     taskElement.querySelector("label").textContent = input.value;
-
     taskElement.removeAttribute("hidden");
+
     originalTaskList.append(taskElement);
 
     const deleteButton = taskElement.querySelector("#deleteButton");
     const checkbox = taskElement.querySelector("input[type=checkbox]");
     const label = taskElement.querySelector("label");
+    const toDoSummary = document.querySelector("#toDoSummary");
 
     counter++;
     itemsLeft++;
@@ -66,6 +67,7 @@ function addToDo() {
     showButton(completedButton);
     //toDoTotal.textContent = itemsLeft + " items left";
     toDoTotal.hidden = false;
+    toDoSummary.hidden = false;
   
 
     printItems(counter, itemsLeft);
@@ -93,6 +95,7 @@ function removeToDo(checkbox, taskElement) {
     printItems(counter, itemsLeft);
     if (counter === 0) {
         hideButton(toggleButton);
+        toDoSummary.hidden = true;
     }
 }
 
@@ -272,6 +275,10 @@ function clearCompleted() {
         }
     })    
 
+    if (counter === 0) {
+        toDoSummary.hidden = true;
+    }
+    
     hideButton(clearButton);
     printItems(counter, itemsLeft);
 }
