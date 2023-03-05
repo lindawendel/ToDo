@@ -1,10 +1,6 @@
 // Variables
 const form = document.querySelector("form");
 const toggleButton = document.querySelector("#toggleButton");
-
-//Används inte?!
-//const taskTemplate = document.querySelector("#new_todo_form"); 
-
 const input = document.querySelector("#new_todo");
 const listTemplate = document.querySelector("#rootLi");
 const originalTaskList = document.querySelector("#taskList");
@@ -17,13 +13,13 @@ const clearButton = document.querySelector("#clearButton");
 const toDoTotal = document.querySelector("#toDoTotal");
 
 let allCheckboxes = document.querySelectorAll("input[type=checkbox]");
+let activeButtonRef = null;
 
 listTemplate.remove();
 listTemplate.removeAttribute("id");
 
 let counter = 0;
 let itemsLeft = 0;
-
 
 // Events
 toggleButton.addEventListener("click", toggleCheckboxes);
@@ -39,7 +35,6 @@ form.onsubmit = event => {
         addToDo();
     };
 }
-
 
 // Functions
 function addToDo() {
@@ -65,17 +60,14 @@ function addToDo() {
     showButton(allButton);
     showButton(activeButton);
     showButton(completedButton);
-    //toDoTotal.textContent = itemsLeft + " items left";
     toDoTotal.hidden = false;
     toDoSummary.hidden = false;
-  
 
     printItems(counter, itemsLeft);
 
     deleteButton.onclick = () => {
 
         removeToDo(checkbox, taskElement);
-
     }
 
     checkbox.addEventListener("change", () => {
@@ -93,6 +85,7 @@ function removeToDo(checkbox, taskElement) {
     counter--;
 
     printItems(counter, itemsLeft);
+
     if (counter === 0) {
         hideButton(toggleButton);
         toDoSummary.hidden = true;
@@ -107,13 +100,13 @@ function printItems(counter, itemsLeft) {
         hideButton(activeButton);
         hideButton(completedButton);
         hideButton(clearButton);
-        if (itemsLeft === 0)
-        {
+
+        if (itemsLeft === 0) {
             toDoTotal.textContent = itemsLeft + " items left";
             toDoTotal.hidden = true;
         }
     }
-    
+
     else if (itemsLeft === 1) {
         toDoTotal.textContent = itemsLeft + " item left";
     }
@@ -190,8 +183,6 @@ function toggleCheckboxes() {
     }
 }
 
-let activeButtonRef = null;                 //Flytta variabel till början av dok? 
-
 function showAll(event) {
     const taskElements = document.querySelectorAll("#taskList li");
 
@@ -202,19 +193,17 @@ function showAll(event) {
         }
     })
 
-    
-  if (activeButtonRef !== null) {
-    activeButtonRef.style.border = 'none';
-  }
-  
-  const clickedButton = event.target;
-  clickedButton.style.border = '1px solid rgba(175, 47, 47, 0.15)';
-  activeButtonRef = clickedButton;
 
+    if (activeButtonRef !== null) {
+        activeButtonRef.style.border = 'none';
+    }
+
+    const clickedButton = event.target;
+    clickedButton.style.border = '1px solid rgba(175, 47, 47, 0.15)';
+    activeButtonRef = clickedButton;
 }
 
 function showActive(event) {
-
     const taskElements = document.querySelectorAll("#taskList li");
 
     taskElements.forEach(task => {
@@ -226,19 +215,18 @@ function showActive(event) {
         else {
             checkBox.parentNode.className = "visible";
         }
-    })  
-    
-  if (activeButtonRef !== null) {
-    activeButtonRef.style.border = 'none';
-  }
-  
-  const clickedButton = event.target;
-  clickedButton.style.border = '1px solid rgba(175, 47, 47, 0.15)';
-  activeButtonRef = clickedButton;
+    })
+
+    if (activeButtonRef !== null) {
+        activeButtonRef.style.border = 'none';
+    }
+
+    const clickedButton = event.target;
+    clickedButton.style.border = '1px solid rgba(175, 47, 47, 0.15)';
+    activeButtonRef = clickedButton;
 }
 
 function showCompleted(event) {
-
     const taskElements = document.querySelectorAll("#taskList li");
 
     taskElements.forEach(task => {
@@ -251,19 +239,17 @@ function showCompleted(event) {
             checkBox.parentNode.className = "visible";
         }
     })
-    
+
     if (activeButtonRef !== null) {
         activeButtonRef.style.border = 'none';
-      }
-      
-      const clickedButton = event.target;
-      clickedButton.style.border = '1px solid rgba(175, 47, 47, 0.15)';
-      activeButtonRef = clickedButton;
-    
+    }
+
+    const clickedButton = event.target;
+    clickedButton.style.border = '1px solid rgba(175, 47, 47, 0.15)';
+    activeButtonRef = clickedButton;
 }
 
 function clearCompleted() {
-
     const taskElements = document.querySelectorAll("#taskList li");
 
     taskElements.forEach(task => {
@@ -273,12 +259,12 @@ function clearCompleted() {
             task.remove();
             counter--;
         }
-    })    
+    })
 
     if (counter === 0) {
         toDoSummary.hidden = true;
     }
-    
+
     hideButton(clearButton);
     printItems(counter, itemsLeft);
 }
