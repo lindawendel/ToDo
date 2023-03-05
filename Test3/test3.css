@@ -89,7 +89,6 @@ form input::placeholder {
   display: grid;
   grid-template:
     "a b c d e" /34% 7% 10% 15% 34%;
-
   align-items: center;
 }
 
@@ -115,10 +114,6 @@ button {
   border-radius: 3px;
   padding-left: 3px;
   padding-right: 3px;
-  ;
-
-
-  /* border: none; */
 }
 
 /* #allButton:focus,  #activeButton:focus, #completedButton:focus {
@@ -291,7 +286,7 @@ li:hover #deleteButton {
   }
 }
 
-/* Det här är kod från ChatGpt för att underlätta för andra webläsare. Men ivi har enbart denna typ av tillägg för font-size. 
+/* Det här är kod från ChatGpt för att underlätta för andra webläsare. Men vi har enbart denna typ av tillägg för font-size. 
   Kanske onödigt?  */
 
 ::-webkit-input-placeholder {
