@@ -56,6 +56,10 @@ function addToDo() {
     itemsLeft++;
     input.value = "";
 
+    if (counter >= 1){
+        form.style.borderBottom = "1px solid grey";
+    }
+
     showButton(toggleButton);
     showButton(allButton);
     showButton(activeButton);
@@ -89,7 +93,7 @@ function removeToDo(checkbox, taskElement) {
     if (counter === 0) {
         hideButton(toggleButton);
         toDoSummary.hidden = true;
-        //form.style.borderBottom = "none";
+        form.style.borderBottom = "none";
     }
 }
 
@@ -105,13 +109,9 @@ function printItems(counter, itemsLeft) {
         if (itemsLeft === 0) {
             toDoTotal.textContent = itemsLeft + " items left";
             toDoTotal.hidden = true;
-            //form.style.borderBottom = "none";
+            form.style.borderBottom = "none";
         }
-    }
-
-    /* if (counter >= 1){
-        form.style.borderBottom = "1px solid grey";
-    } */
+    }    
 
     else if (itemsLeft === 1) {
         toDoTotal.textContent = itemsLeft + " item left";
