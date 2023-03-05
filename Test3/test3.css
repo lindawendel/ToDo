@@ -10,7 +10,6 @@ h1 {
   font-weight: 100;
   padding-top: 10px;
   padding-bottom: 8px;
-  
 }
 
 body {
@@ -21,11 +20,9 @@ body {
 #container {
   line-height: 1.4em;
   font-weight: 300;
-  /* border: 0.5px solid red; */
   box-shadow: 3px 3px 15px rgb(0 0 0 / 20%);
   /* padding-top: 10px;
   padding-bottom: 10px; */
-
 }
 
 #taskList {
@@ -38,8 +35,9 @@ footer {
   font-size: 10px;
 }
 
-#container, button {
-  background:  #fff;
+#container,
+button {
+  background: #fff;
 }
 
 #clearButton {
@@ -61,36 +59,36 @@ footer {
   outline: none;
 }
 
-#new_todo_form{
-  padding: 15px 5px ;
+#new_todo_form {
+  padding: 15px 5px;
   /* border-bottom: 1px solid grey; */
 }
 
 form input::placeholder {
   font-size: 22px;
-  color:#bfbfbf; 
+  color: #bfbfbf;
 }
 
 #toggleButton {
   font-size: 22px;
 }
-#toDoTotal, #clearButton, .summary {
+
+#toDoTotal,
+#clearButton,
+.summary {
   color: #777;
   font-size: 14px;
 }
 
-::placeholder{
-  /* De två raderna nedanför här borde göra att själva rutan runt placeholdern försvinner, men icke */
-  /* border: none;
-  outline: none; */
+::placeholder {
   font: 1rem 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: italic;
 }
 
 #summaryButtons {
   display: grid;
-  grid-template: 
-  "a b c d e" /34% 7% 10% 15% 34%;
+  grid-template:
+    "a b c d e" /34% 7% 10% 15% 34%;
 
   align-items: center;
 }
@@ -100,84 +98,70 @@ p {
 }
 
 #toDoTotal {
- justify-self: start;
+  justify-self: start;
 }
 
 button {
-  border:none;
+  border: none;
 }
 
-.summary:hover{
-  border: 1px solid  rgba(175, 47, 47, 0.15);
+.summary:hover {
+  border: 1px solid rgba(175, 47, 47, 0.15);
   cursor: pointer;
 }
 
 .summary {
-justify-self: center;
-border-radius: 3px; 
-padding-left: 3px;
-padding-right: 3px;;
+  justify-self: center;
+  border-radius: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
+  ;
 
 
-/* border: none; */
+  /* border: none; */
 }
 
- /* #allButton:focus,  #activeButton:focus, #completedButton:focus {
+/* #allButton:focus,  #activeButton:focus, #completedButton:focus {
   border: 1px solid black;
 } */
 
-#summaryButtons{
+#summaryButtons {
   padding: 10px;
 }
 
 li {
   list-style-type: none;
   display: grid;
-  /* grid-template-columns: min-content; */
   grid-template:
     "a b c" / 40px 460px 40px;
-    border-bottom: 1px solid grey;
-    padding: 5px;
+  border-bottom: 1px solid grey;
+  padding: 5px;
 }
 
 li input {
   justify-self: start;
   border-radius: 50%;
   align-self: center;
-  
+
 }
 
-li label{
+li label {
   text-align: left;
-  font: 22px 'Helvetica Neue', Helvetica, Arial, sans-serif;  
+  font: 22px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-input[type="checkbox"]{
+input[type="checkbox"] {
   margin-left: 4px;
   width: 20px;
   height: 20px;
 }
 
-/* input[type="checkbox"]{
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1px solid #ccc;
-  margin-left: 3px;
-  cursor: default;
-}
-
-input[type="checkbox"]:checked {
-  background-color: bisque;
-  
-} */
-
 li button {
   justify-self: end;
 }
 
-header, #container {
+header,
+#container {
   width: 550px;
 }
 
@@ -201,133 +185,131 @@ body {
   display: grid;
   justify-content: center;
   text-align: center;
-  /* grid-template: */
 }
-
 
 #container {
-  display:grid;
-  /* grid-template-rows: auto, 0px; */
-}
-
-
- #taskList { 
   display: grid;
 }
 
-/*Kopierar in Jakobs kod för att dölja button. Den funkar men objekten läggs inte på rätt ställe:
-  
+#taskList {
+  display: grid;
+}
+
+#deleteButton {
+  display: none;
+}
+
+li:hover #deleteButton {
+  display: block;
+}
+
+.invisible {
+  display: none;
+}
+
+.visible {
+  display: grid;
+}
+
+@media (max-width: 800px) {
+
+  #container,
+  header,
+  ul {
+    width: 450px;
+  }
+
+  form {
+    grid-template:
+      "a b" / 40px 400px;
+  }
+
   li {
-    display: flex;
-    flex-direction: row;
-  }*/
-  #deleteButton {
-    display: none;
-  }
-  li:hover #deleteButton {
-    display: block;
-  }
-
-  .invisible{
-    display:none;
-  }
-
-  .visible{
-    display: grid;
-  }
-
-  @media (max-width: 800px) {
-
-    #container, header, ul {
-      width: 450px;
-    }
-
-    form {
-      grid-template:
-        "a b" / 40px 400px;
-    }
-
-    li {
-      grid-template: 
+    grid-template:
       "a b c" / 40px 360px 40px;
-    }
+  }
 
-    #summaryButtons {
-      display: grid;
-      grid-template: 
+  #summaryButtons {
+    display: grid;
+    grid-template:
       "a b c d e" /30% 7% 13% 20% 30%;
+  }
+}
 
-    }
-  } 
+@media (max-width: 600px) {
 
-  @media (max-width: 600px) {
+  #container,
+  header,
+  ul {
+    width: 350px;
+  }
 
-    #container, header, ul {
-      width: 350px;
-    }
+  form {
+    grid-template:
+      "a b" / 40px 300px;
+  }
 
-    form {
-      grid-template:
-        "a b" / 40px 300px;
-    }
-
-    li {
-      grid-template: 
+  li {
+    grid-template:
       "a b c" / 40px 260px 40px;
-    }
+  }
 
-    #summaryButtons {
-      font-size: 12px;
-      display: grid;
-      grid-template: 
+  #summaryButtons {
+    font-size: 12px;
+    display: grid;
+    grid-template:
       "a b c d e" /25% 7% 18% 25% 25%;
-
   }
 
-    form input::placeholder {
-      font-size: 18px; 
-    }
-
-    #toggleButton {
-      font-size: 18px;
-    }
-
-    #new_todo {
-      font-size: 18px;
-    }
-
-    h1 {
-      font-size: 60px;
-    }
-
-    li label {
-      font-size: 18px;
-    }
-
-    input[type="checkbox"] {
-      width: 15px;
-      height: 15px;
-    }
-
-    footer {
-      padding: 40px;
-    }
-    
-
+  form input::placeholder {
+    font-size: 18px;
   }
 
-  /* Det här är kod från ChatGpt för att underlätta för andra webläsare. Men ivi har enbart denna typ av tillägg för font-size. Kanske onödigt?  */
+  #toggleButton {
+    font-size: 18px;
+  }
 
-  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    font-size: 16px;
+  #new_todo {
+    font-size: 18px;
   }
-  ::-moz-placeholder { /* Firefox 19+ */
-    font-size: 16px;
+
+  h1 {
+    font-size: 60px;
   }
-  :-ms-input-placeholder { /* IE 10+ */
-    font-size: 16px;
+
+  li label {
+    font-size: 18px;
   }
-  :-moz-placeholder { /* Firefox 18- */
-    font-size: 16px;
+
+  input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
   }
-  
+
+  footer {
+    padding: 40px;
+  }
+}
+
+/* Det här är kod från ChatGpt för att underlätta för andra webläsare. Men ivi har enbart denna typ av tillägg för font-size. 
+  Kanske onödigt?  */
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  font-size: 16px;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 16px;
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  font-size: 16px;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 16px;
+}
